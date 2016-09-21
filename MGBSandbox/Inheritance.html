@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<body>
+
+		<p id="demo"></p>
+
+		<script>
+			function Human(name, age) {
+				this.name = name;
+				this.age = age;
+			}
+
+			function Baby(name, age, weight) {
+				Human.call(this, name, age);
+				this.weight = weight;
+			}
+
+			var aBaby = new Baby('sally', 2, 9);
+
+			document.getElementById("demo").innerHTML =
+			"Baby's name is " + aBaby.name + " is " + aBaby.age + " months old and weighs " + aBaby.weight + "lbs";
+		</script>
+
+	</body>
+</html>
