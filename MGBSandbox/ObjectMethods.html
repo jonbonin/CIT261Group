@@ -6,6 +6,7 @@
 		<p id="demo3"></p>
 
 		<script>
+			//basic person object
 			var person = {
     			firstName: "John",
     			lastName : "Doe",
@@ -14,10 +15,13 @@
     			}
 			};
 
+			//calls fulName method
 			document.getElementById("demo").innerHTML = person.fullName();
+			//calls method without (), returning function definition
+			document.getElementById("demo2").innerHTML = person.fullName;
 
-
-			function person2(firstName,lastName,age,eyeColor) {
+			//Person2 object prototype
+			function Person2(firstName,lastName,age,eyeColor) {
     			this.firstName = firstName;
     			this.lastName = lastName;
     			this.age = age;
@@ -27,10 +31,11 @@
     			}
 			}
 
-			var myMother = new person2("Sally","Rally",48,"green");
+			//calls changeName method
+			var myMother = new Person2("Sally","Rally",48,"green");
 			myMother.changeName("Doe");
 			
-			document.getElementById("demo2").innerHTML =
+			document.getElementById("demo3").innerHTML =
 				"My mother's last name is " + myMother.lastName;
 
 		</script>

@@ -5,16 +5,19 @@
 		<p id="demo"></p>
 
 		<script>
+			//Human object prototype
 			function Human(name, age) {
 				this.name = name;
 				this.age = age;
 			}
 
+			//Baby object prototype, which inherits from Human
 			function Baby(name, age, weight) {
 				Human.call(this, name, age);
 				this.weight = weight;
 			}
 
+			//instanties a Baby object
 			var aBaby = new Baby('sally', 2, 9);
 
 			document.getElementById("demo").innerHTML =

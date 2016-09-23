@@ -6,6 +6,7 @@
 		<p id="demo3"></p>
 
 		<script>
+			//Person object prototype
 			function Person(first, last, age, eye) {
     			this.firstName = first;
     			this.lastName = last;
@@ -13,9 +14,11 @@
     			this.eyeColor = eye;
 			}
 
+			//instantiates two Person objects
 			var myFather = new Person("John", "Doe", 50, "blue");
 			var myMother = new Person("Sally", "Rally", 48, "green");
 
+			//prints age of both Persons
 			document.getElementById("demo").innerHTML =
 				"My father is " + myFather.age + ". My mother is " + myMother.age;
 

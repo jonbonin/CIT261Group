@@ -6,6 +6,7 @@
 		<p id="demo3"></p>
 
 		<script>
+			//basic person object
 			var person = {
     			firstName : "John",
     			lastName  : "Doe",
@@ -13,6 +14,7 @@
     			eyeColor  : "blue"
 			};
 
+			//uses loop to print all persons properties
 			var txt = "";
 			var x;
 			for (x in person) {
@@ -22,25 +24,27 @@
 			document.getElementById("demo").innerHTML = txt;
 
 
-
+			//basic person2 class
 			var person2 = {
     			firstname:"John",
     			lastname:"Doe",
     			age:50,
     			eyecolor:"blue"
 			};
+			//adds property to person2
 			person2.nationality = "English";
 			
 			document.getElementById("demo2").innerHTML =
 				person2.firstname + " is " + person2.nationality + ".";
 
-
+			//basic person3 class
 			var person3 = {
     			firstname:"John",
     			lastname:"Doe",
     			age:50,
     			eyecolor:"blue"
 			};
+			//deletes person3 property
 			delete person3.age;
 
 			document.getElementById("demo3").innerHTML =
