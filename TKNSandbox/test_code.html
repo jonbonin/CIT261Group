@@ -1,0 +1,16 @@
+<!DOCTYPE>
+<html>
+<h2>Good example of a JSON.parse()</h2>
+<p id="example"></p>
+<script>
+ var teammates = '{"firstName":["Tanner","Jon","Matt","Peyton],"lastName":["Nielsen","Bonin","Beagley","Dunnaway"]}';
+
+
+    var object = JSON.parse(teammates);
+    for (var i = 0; i < 4; i++) {
+        document.getElementById("example").innerHTML =
+         teammates
+    }
+</script>
+
+</html>
