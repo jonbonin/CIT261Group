@@ -66,8 +66,11 @@
 		class += "<li>" + students + "</li>"
 		]</p>
 	</br>
-	<!-- NASTY PATH: Some programming languages support associative arrays. In Javascript, associative arrays are NOT supported. Associative arrays use named indexes, instead of counting in numbers. Using named indexes will produce undesired results. -->
+	<!-- NASTY PATH: Some programming languages support associative arrays. In Javascript, associative arrays are NOT supported, except as objects! Associative arrays use named indexes, instead of counting in numbers. Using named indexes outside of an object will produce undesired results. -->
 	<p>students["firstname"]; vs. students[i];</p>
+	<!-- HAPPY PATH: use only in an object -->
+	<p>theObject[theProperty] = "value";</p>
+	<p>theObject.theProperty = "value";</p>
 	</br>
 	<!-- HAPPY PATH: 'shift()', 'pop()', and 'push()' add or remove an element to or from the end of an array. -->
 	<p>var fruits = ["Banana, "Orange", "Apple", "Mango"];</p>
