@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>TODO supply a title</title>
+        <title>xmlhttp Request</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <script>
             function loadJSON() {
-                var data = "http://api.openweathermap.org/data/2.5/weather?q=London,uk&appid=44db6a862fba0b067b1930da0d769e98";
+                var data = "http://www.w3schools.com/json/myTutorials.txt";
+//                http://api.openweathermap.org/data/2.5/weather?q=London,uk&appid=44db6a862fba0b067b1930da0d769e98
+//                old url used
                 var http_request = new XMLHttpRequest();
                 http_request.onreadystatechange = function () {
 
@@ -16,8 +18,8 @@
                         var jsonObj = JSON.parse(http_request.responseText);
 
 //                       jsonObj variable now contains the data structure and can be accessed as jsonObj.name and jsonObj.country.
-                        document.getElementById("DisplayCity").innerHTML = jsonObj.name;
-                        document.getElementById("DisplayWeather").innerHTML = jsonObj.weather[0].description;
+                        document.getElementById("Display").innerHTML = jsonObj.display;
+                        document.getElementById("URL").innerHTML = jsonObj.weather[0].url;
                     }
                 };
 
@@ -31,10 +33,26 @@
         <header>
             <h1>Using XMLHTTPRequest to Consume a JSON Web Service</h1>
             <nav>
-                <a href="index.html">Home Page</a>
+                <a href="/CIT261Group/JEBSandbox/index.php">Home Page</a>
             </nav>
         </header>
-        <p id="DisplayCity">City will display here</p>
+        <h2>What This Does</h2>
+        <p>
+            When you hit the button, a xmlhttp request is made, and then sent to the proper URL.
+            The URL then sends a response back in the form of JSON.
+        </p>
+        <p>
+            JSON is a way of writting the response, it is like MLA format versus the other one.
+            The sandbox that I have written then takes this response and given the request, gives the right answer from the Json.
+        </p>
+        <p>
+            Something that also has to be done is parsing.
+            What this means is to take some text and put it into the JSON format, or to take it out.
+            In his situation, it is already in JSON, so we are taking it out of the JSON text, and putting it into normal English.
+        </p>
+        <br>
+        <br> 
+       <p id="DisplayCity">City will display here</p>
         <p id="DisplayWeather">Weather will display here</p>
         <button type = "button" onclick = "loadJSON()"> Display Details </button>
     <!--resource that helped me understand:https://www.youtube.com/watch?v=SjLJ8Dyuywg-->
