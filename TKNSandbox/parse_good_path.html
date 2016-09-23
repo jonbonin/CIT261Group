@@ -23,7 +23,7 @@
 	//This notation works for putting information into 'var info'
 	//I wasn't sure why the below notation works but the upper doesn't
 	
-	//Put information into a string
+	//Put information into variable
     var info = '{ "teammates" : [' +
         '{ "firstName":"Tanner" , "lastName":"Nielsen" },' +
         '{ "firstName":"Jon" , "lastName":"Bonin" },' +
@@ -35,6 +35,10 @@
 	
 	//Having single quotes where you should have double
 	//JSON.parse('['Tanner', 'Jon', 'Matt', 'Peyton' ]');
+	
+	//The following code is already in object form
+	//So using parse won't work the way it should
+	/*var info = '{"firstName":["Tanner","Jon","Matt","Peyton],"lastName":["Nielsen","Bonin","Beagley","Dunnaway"]}';*/
 
 	//Turns string into objects
     var object = JSON.parse(info);

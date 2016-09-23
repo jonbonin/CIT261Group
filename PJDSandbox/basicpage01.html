@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<!-- all html documents need <!DOCTYPE html> at top of file-->
+<html>
+<!-- html code is set within 'html' tags -->
+<head>
+<!-- html files have a header that contains title information and JavaScript functions in 'script' tags -->
+	<script>
+	<!-- functions can go in the body, but ought to be placed towards the bottom because loading scripts can slow down the display. -->
+		function myFunction() {
+			document.getElementById("demo").innerHTML = "Oh look, this content has been magically changed!";}
+		<!-- variables are declared with 'var' in front, rather than a data type like int, char, or double. -->
+		function myFunction2() {
+			var x;
+			x = "This text is a value in a variable.";
+			document.getElementById("demo2").innerHTML = x;}
+		
+	<!-- scripts can also be in an external file, called into the html file through 'src="filename.js" -->
+	</script>
+</head>
+
+<body>
+<!-- all visual elements go between 'body' tags -->
+	<h1>My First Javascript Page!</h1>
+	<h2>Sandboxing Loops, Conditionals, Functions, Variables, Parameters, Arrays, and Associative Arrays</h2>
+	<h3>Things Javascript can do:</h3>
+	<p id="demo">Javascript can change HTML content.</p>
+	<button type="button" onclick="myFunction()">Change Content!</button>
+	</br>
+	<p id="demo2" onclick="myFunction2()">click here</p>
+	</br>
+	<!-- HAPPY PATH: variables are declared with var and given a meaningful name and a value -->
+	<p>var schoolName;</p>
+	<p>schoolName = "BYUI";</p>
+	<!-- NASTY PATH: cannot set value before declaring with 'var' -->
+	<p>schoolName = "BYUI";</p>
+	<p>var schoolName;</p>
+	</br>
+	<!-- HAPPY PATH: functions are declared with 'function' and a meaningful name, put parameters in parentheses, and place the code to execute in brackets -->
+	<p>function myFunction(p1, p2) {
+		return p1 + p2;
+	}</p>
+	<!-- NASTY PATH: declaring without using 'function' in front, using proper parameters, or forgetting ';' in function code. -->
+	<p>myFunction(?!, %4) {
+		return p1 + p2
+	}</p>
+	</br>
+	<!-- HAPPY PATH: Arrays are special variables that hold more than one value at a time. You declare one like a normal variable, but then you use '[]' to surround multiple values, separated by commas. -->
+	<p>var students = [John, Michael, Sarah, Ben, ...];</p>
+	<!-- NASTY PATH: Forgetting to use '[]', declare as a var, or forgetting ';' after the ']'. -->
+	<p>students = {John, Michael, Sarah, Ben, ...}</p>
+	</br>
+	<!-- HAPPY PATH: You also access the different values later on by using an index number in '[]'. -->
+	<p>students[0] = "John";</p>
+	<!-- '0' access the first item in the list, '1' the second, and so on -->
+	<!-- NASTY PATH: forgetting to use '[]' or using an index number greater than there are items in the array. -->
+	<p>students{250} = *error*;</p>
+	</br>
+	<!-- HAPPY PATH: Displaying all the items in an array is done by looping through the array with a 'for-loop'. -->
+	<p>var class = "<ul>";</p>
+	<p>for (i = 0; i < 10; i++){
+		class += "<li>" + students[i] + "</li>";
+		}</p>
+	<!-- NASTY PATH: incrementing the index number 'i' incorrectly, forgetting to display the array in the loop according to 'index', or forgetting '{}' or ';'. -->
+	<p>var class = "<ul>";</p>
+	<p>for (i = 0; i > 10; i++) [
+		class += "<li>" + students + "</li>"
+		]</p>
+	</br>
+	<!-- NASTY PATH: Some programming languages support associative arrays. In Javascript, associative arrays are NOT supported, except as objects! Associative arrays use named indexes, instead of counting in numbers. Using named indexes outside of an object will produce undesired results. -->
+	<p>students["firstname"]; vs. students[i];</p>
+	<!-- HAPPY PATH: use only in an object -->
+	<p>theObject[theProperty] = "value";</p>
+	<p>theObject.theProperty = "value";</p>
+	</br>
+	<!-- HAPPY PATH: 'shift()', 'pop()', and 'push()' add or remove an element to or from the end of an array. -->
+	<p>var fruits = ["Banana, "Orange", "Apple", "Mango"];</p>
+	<p>var x = fruits.pop();</p> 
+	<!-- 'Mango' is removed and put into 'x'. -->
+	<p>fruits.push("Kiwi");</p>
+	<!-- 'Kiwi' is added to the end of the array. -->
+	<p>fruits.shift();
+	<!-- removes first element 'Banana' and moves indexes of other items down. 'unshift()' adds new element at beginning and moves indexes of others up. -->
+	<!-- NASTY PATH: forgetting a value to 'push' onto the end of an array, or removing an element and forgetting to put it somewhere else when you still need it. -->
+	<p>*no variable* fruits.pop();</p>
+	<p>fruits.push();</p>
+	</br>
+	<!-- HAPPY PATH: Conditionals are the basic logic component of the decisions a program makes. It uses 'if' statements 'else' statements and 'switch' statements. It works like a function, stating 'if' followed by parentheses with a Boolean expression and '{}' to contain code to be executed if the conditional statement is satisfied. -->
+	<p>if (time > 1800) {</p>
+		<p>greeting = "Good night";</p>
+		<p>}</p>
+	<!-- NASTY PATH: using a Boolean expression that does not make sense -->
+	<p>if (time > 2600) {</p>
+		<p>greeting = "Good afternoon";</p>
+		<p>}</p>
+	</br>
+	<h1>HAVE FUN JAVASCRIPTING!</h1>
+</body>
+</html>
