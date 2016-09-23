@@ -56,13 +56,13 @@
 	<p>students{250} = *error*;</p>
 	</br>
 	<!-- HAPPY PATH: Displaying all the items in an array is done by looping through the array with a 'for-loop'. -->
-	<p>var class = "<ul>";
-	for (i = 0; i < 10; i++){
+	<p>var class = "<ul>";</p>
+	<p>for (i = 0; i < 10; i++){
 		class += "<li>" + students[i] + "</li>";
 		}</p>
 	<!-- NASTY PATH: incrementing the index number 'i' incorrectly, forgetting to display the array in the loop according to 'index', or forgetting '{}' or ';'. -->
 	<p>var class = "<ul>";</p>
-	<p>for (i = 0; i > 10; i++) []
+	<p>for (i = 0; i > 10; i++) [
 		class += "<li>" + students + "</li>"
 		]</p>
 	</br>
@@ -82,14 +82,14 @@
 	<p>fruits.push();</p>
 	</br>
 	<!-- HAPPY PATH: Conditionals are the basic logic component of the decisions a program makes. It uses 'if' statements 'else' statements and 'switch' statements. It works like a function, stating 'if' followed by parentheses with a Boolean expression and '{}' to contain code to be executed if the conditional statement is satisfied. -->
-	<p>if (time > 6pm) {</p>
+	<p>if (time > 1800) {</p>
 		<p>greeting = "Good night";</p>
 		<p>}</p>
 	<!-- NASTY PATH: using a Boolean expression that does not make sense -->
-	<p>if (time > 13pm) {</p>
+	<p>if (time > 2600) {</p>
 		<p>greeting = "Good afternoon";</p>
 		<p>}</p>
-		</br>
-		
+	</br>
+	<h1>HAVE FUN JAVASCRIPTING!</h1>
 </body>
 </html>
