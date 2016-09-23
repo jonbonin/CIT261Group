@@ -1,25 +1,21 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <?php include $_SERVER['DOCUMENT_ROOT'] . '/CIT261Group/JEBSandbox/modules/head.php'; ?>
+        <?php include $_SERVER['DOCUMENT_ROOT'] . '/modules/head.php'; ?>
         <title>
-            Home | mobileappdevelopment.com
+            Page Title | Food-thecollegway.com
         </title>
     </head>
     <body>
         <div>
             <header role="banner">
-                <?php include $_SERVER['DOCUMENT_ROOT'] . '/CIT261Group/JEBSandbox/modules/header.php'; ?>
+                <?php include $_SERVER['DOCUMENT_ROOT'] . '/modules/header.php'; ?>
             </header>
             <div>
                 <main role="main">
                     <div>
-                        <h2>Pupose</h2>
-                        <p>
-                            The purpose is 
-                        </p>
-                        <h2>Mission Statement</h2>
-                        <p>I want to be able to</p>
+                        <h1>Page Heading</h1>
+                        <!--The main content of the page will go here-->
                     </div>
                 </main>
             </div>
@@ -28,7 +24,7 @@
             </aside>
             <footer role="contentinfo">
                 <div>
-                    <?php include $_SERVER['DOCUMENT_ROOT'] . '/CIT261Group/JEBSandbox/modules/footer.php'; ?>
+                    <?php include $_SERVER['DOCUMENT_ROOT'] . '/modules/footer.php'; ?>
                     <?php echo 'last update: ' . date('F j, Y', getlastmod()) ?>
                 </div>
             </footer>
