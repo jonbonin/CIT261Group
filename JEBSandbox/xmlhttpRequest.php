@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>xmlhttp Request</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>
+            XMLHTTP Request
+        </title>
+        <?php include $_SERVER['DOCUMENT_ROOT'] . '/CIT261Group/JEBSandbox/modules/head.php'; ?>
         <script>
             function loadJSON() {
                 var data = "http://www.w3schools.com/json/myTutorials.txt";
@@ -32,9 +33,6 @@
     <body>
         <header>
             <h1>Using XMLHTTPRequest to Consume a JSON Web Service</h1>
-            <nav>
-                <a href="/CIT261Group/JEBSandbox/index.php">Home Page</a>
-            </nav>
         </header>
         <h2>What This Does</h2>
         <p>
@@ -52,9 +50,9 @@
         </p>
         <br>
         <br> 
-       <p id="DisplayCity">City will display here</p>
+        <p id="DisplayCity">City will display here</p>
         <p id="DisplayWeather">Weather will display here</p>
         <button type = "button" onclick = "loadJSON()"> Display Details </button>
-    <!--resource that helped me understand:https://www.youtube.com/watch?v=SjLJ8Dyuywg-->
+        <!--resource that helped me understand:https://www.youtube.com/watch?v=SjLJ8Dyuywg-->
     </body>
 </html>
