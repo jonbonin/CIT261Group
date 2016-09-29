@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Loops, Conditional Statements, Functions, Variables, Parameters, Arrays, Associative Arrays</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script>
+            var fruit = ["Kiwi", "orange", "bannana", "apple", "peach", "plum"];
+            console.log(fruit);
+
+//            The following is a self declaring function that pushes another (mango) to the end of the array
+            (function pushFruit() {
+                fruit.push("mango");
+                console.log(fruit);
+            }());
+//            result: it actually works. Displays in the console.log with an extra fruit
+
+//            self declaring function that pops an entry off of the fruit array
+            (function popFruit() {
+                fruit.pop();
+                console.log(fruit);
+            }());
+//            result: the fruit array no longer has mango at the end
+
+//            self declaring function that adds mango to the front of the array
+            (function unshiftFruit() {
+                fruit.unshift("mango");
+                console.log(fruit);
+            }());
+//            result: adds mango to the front of the array
+
+//            this deletes the first entry in the array
+            (function shiftFruit() {
+                fruit.shift();
+                console.log(fruit);
+            }());
+//            result: deletes first item in array
+
+//            add fruit to the middle of te array
+            (function spliceFruit() {
+                fruit.splice(2, 0, "mango", "cat");
+                console.log(fruit);
+            }());
+//            result: adds mango and cat to the middle of the array
+
+//            remove two fruit in the middle of an array
+            (function deSpliceFruit() {
+                fruit.splice(2, 2);
+                console.log(fruit);
+            }());
+//            This removes mango and cat
+//nasty path time
+//            what happens if I put something in the pop ()?
+//            (function popFruit("There") {
+//                fruit.pop();
+//                console.log(fruit);
+//            }());
+//            return: unexpected string
+
+//            What about a number?
+//            (function popFruit() {
+//                fruit.pop(3);
+//                console.log(fruit);
+//            }());
+//            result: 3 items where expect to be taken off, but only one was.
+
+// assuming the same will happen with unshift and shift
+        </script>
+    </head>
+    <body>
+        <header>
+            <h1>Loops, Conditional Statements, Functions, Variables, Parameters, Arrays, Associative Arrays</h1>
+            <nav>
+                <a href="index.html">Home Page</a>
+            </nav>
+        </header>
+        <p>
+            Arrays are very helpful.
+            The help you store a lot of items in one variable.
+            The particular category that I have used is fruit.
+            As you will see, I have stored a few different types of fruit within one variable fruit. 
+            (Bit redundant, but helps you remember what the variable is for.)
+        </p>
+        <p>
+            The are a few different things that you can do with arrays.
+            You can add and take away items at the end and beginning of arrays.
+            These are called pushing, popping, shift, and unshift. 
+            I will go over these in more detail.
+        </p>
+        <ul>
+            <li>
+                fruit.pop();
+                <ul>
+                    <li>
+                        This adds one or more items onto the array.
+                    </li>
+                </ul>
+            </li>
+            <li>
+                fruit.push();
+                <ul>
+                    <li>
+                        This takes away one item at a time from the end of the array
+                    </li>
+                </ul>
+            </li>
+            <li>
+                fruit.unshift();
+                <ul>
+                    <li>
+                        This adds multiple items to the beginning of an array
+                    </li>
+                </ul>
+            </li>
+            <li>
+                fruit.shift();
+                <ul>
+                    <li>
+                        This takes away the first item in the array.
+                    </li>
+                </ul>
+            </li>
+            <li>
+                fruit.splice(2, 0, "mango", "cat");
+                <ul>
+                    <li>
+                        This function as a few different notes to it. The next two bullet points are required, the third is optional.
+                    </li>
+                    <li>
+                        The 2 is the position. In other words you are telling the function where to put the values within the array.
+                    </li>
+                    <li>
+                        The 0 is telling how many items to delete. There two examples that I have, one adds and doesn't delete, the other deletes, and doesn't add.
+                    </li>
+                    <li>
+                        For the function to work this is not required. 
+                        When you add something (like in my example) you can specify what you want to go into the array at the defined position.
+                    </li>
+                </ul>
+            </li>
+        </ul>
+        <p>
+            I would note two things here.
+            This will help you remember which one does what.
+            First, the push pushes the last one item away, therfore deleting it from the array.
+            Secondly, the shift and unshift are backwards. The unshift adds to the beginning of an array.
+            To remember which item goes at which end of the array, that is for you to decide.
+        </p>
+        <p>
+            Here is the code that I used to illustrate using arrays.
+            Don't forgot to open the console(right click then inspect) to view the results to these sets of code.<br>
+            <strong>Note:</strong> I used self declaring functions for these examples.
+            This is done with the extra parenthesis that are outside the function.
+        </p>
+        <code>
+            //            The following is a self declaring function that pushes another (mango) to the end of the array<br>
+            (function pushFruit() {<br>
+            fruit.push("mango");<br>
+            console.log(fruit);<br>
+            }());<br>
+            //            result: it actually works. Displays in the console.log with an extra fruit<br>
+            <br>
+            //            self declaring function that pops an entry off of the fruit array<br>
+            (function popFruit() {<br>
+            fruit.pop();<br>
+            console.log(fruit);<br>
+            }());<br>
+            //            result: the fruit array no longer has mango at the end<br>
+            <br>
+            //            self declaring function that adds mango to the front of the array<br>
+            (function shiftFruit() {<br>
+            fruit.unshift("mango");<br>
+            console.log(fruit);<br>
+            }());<br>
+            //            result: adds mango to the front of the array<br>
+            <br>
+            //            this deletes the first entry in the array<br>
+            (function shiftFruit() {<br>
+            fruit.shift();<br>
+            console.log(fruit);<br>
+            }());<br>
+            //            result: deletes first item in array<br>
+        </code>
+    </body>
+</html>
