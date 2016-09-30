@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script>
+		//WEB STORAGE API is GLOBAL object! (stored in window object ie: window.localStorage or window.sessionStorage)
+		//Web Storage can be turned off by user, so use fallback mechanism when unavailable.
+		//can only store strings, but can store and retrieve JSON objects with JSON.stringify() and JSON.parse().
+		//session storage API - use for browser session (disappears on close)
+		sessionStorage.setItem('myKey', 'myValue');
+		var myVar = seesionStorage.getItem('myKey');
+		
+		//local storage API - use for offline storage (remains after close)
+		//When data stored in local, storage event is fired in other windows/tabs!
+		localStorage.setItem('myKey', 'myValue');
+		var myVar = localStorage.getItem('myKey');
+		
+		window.addEventListener('storage', function(event) {console.log('The value for ' + event.key + ' was changed from' + event.oldValue + ' to ' + event.newValue);}, false);
+	</script>
+</head>
+<body>
+	<script>
+	</script>
+</body>
+</html>
