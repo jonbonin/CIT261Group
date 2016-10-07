@@ -1,0 +1,84 @@
+<html>
+    <head>
+        <title>DOM Data Optimization Multiplier</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script>
+            function myManipulation() {
+                document.getElementById('addIn').innerHTML = "This text was inserted in between the p tags after the page was loaded. Not the p tags themselves though"
+
+            }
+            function date() {
+                document.write(Date());
+            }
+
+            function addLiTop() {
+                var newLi = document.createElement("LI");
+                var text = document.createTextNode("shant I be here?");
+                newLi.appendChild(text);
+//                newLi.appendChild(text);
+
+                var listy = document.getElementById("addDelete");
+                listy.insertBefore(newLi, listy.childNodes[0]);
+//                listy.insertBefore(newLi, listy.childNodes[0]);
+            }
+
+            function deleteLi() {
+                var parentTag = document.getElementById("addDelete");
+                parentTag.removeChild(parentTag.childNodes[0]);
+            }
+//            nasty path
+//            Delete something that is not a child of the parent
+//                    result: domManip.html:26 Uncaught TypeError: Failed to execute 'removeChild' on 'Node': parameter 1 is not of type 'Node'.
+
+            function deleteNot() {
+                var parentTag = document.getElementById("addDelete");
+                parentTag.removeChild(parentTag.childNodes[0]);
+            }
+            
+            function addLiBottom() {
+                var newLi = document.createElement("LI");
+                var text = document.createTextNode("or shant I be bellow?");
+                newLi.appendChild(text);
+
+                var listy = document.getElementById("addDelete");
+                listy.appendChild(newLi);
+            }
+//                remeve child where the value is null
+//                add a child that does not belong
+//                append child and pass it a five
+//                insert before with nulls
+//                append child to two different sections
+        </script>
+    </head>
+    <body onload="myManipulation()">
+        <!--pic gained from this site http://www.w3schools.com/js/js_htmldom.asp-->
+        <h2>DOM Manipulation Using createElement, appendChild, insertBefore, removeChild, etc.</h2>
+        <div>
+            <p>This paragraph is in a div, where delete and create childs will be.</p>
+            <p id = "addIn"></p>
+            <button onclick="date()">Lets change the document to the time</button>
+            <p>
+                The following would be a good example of a To Do List.
+                Although it would be set up slightly differently,
+                you would be able to choose witch item you wanted to delete.
+                An array could even be used in this situation.
+            </p>
+            <ul id="addDelete">
+                <li>liquid</li>
+                <li>what that is</li>
+                <li>where to be</li>
+            </ul>
+            <button onclick="addLiTop()">Add item at the top</button>
+            <button onclick="deleteLi()">Delete an item from top</button>
+            <button onclick="addLiBottom()">Add Item at the bottom</button>
+        </div>
+        <div>
+            <p>
+                DOM Manipulation is the changing of the Markup language with the end result of changing what the user will see.
+                For example this is useful when they have logged in as an administrator, and as such should receive additional privileges, and pages that cannot seen by the regular public.
+                For example, with Amazon, you do not have access to the prime moves unless you are a prime member.
+            </p>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            XMLHTTP Request
+        </title>
+        <?php include $_SERVER['DOCUMENT_ROOT'] . '/CIT261Group/JEBSandbox/modules/head.php'; ?>
+        <script>
+            function loadJSON() {
+                var data = "http://services.groupkt.com/country/get/all";
+                var http_request = new XMLHttpRequest();
+//                Nasty Path: without creating the new request, it will be confused with other requests that are made
+                http_request.onreadystatechange = function () {
+//                   Nasty Path: If the onreadystatechange does not equal a function, it will break
+
+                    if (http_request.readyState == 4 & http_request.status == 200) {
+//                       Nasty Path: If the readState is changed to something other than 4, it breaks
+                        console.log(http_request.responseText);
+//                        Nasty Path: Javascript function JSON.parse to parse JSON data
+                        var countryAbrev = JSON.parse(http_request.responseText);
+//                        Nasty path: Without JSON.parse, it will break
+
+//                       countryAbrev variable now contains the data structure and can be accessed as countryAbrev.name and countryAbrev.country.
+                        document.getElementById("DisplayCountry").innerHTML = countryAbrev.RestResponse.result[0].name;
+                        document.getElementById("TwoLetter").innerHTML = countryAbrev.RestResponse.result[0].alpha2_code;
+                        document.getElementById("ThreeLetter").innerHTML = countryAbrev.RestResponse.result[0].alpha3_code;
+                    }
+                };
+
+                http_request.open("GET", data, true);
+                http_request.send();
+
+//                nasty path changing the URL to a number
+                var nastyPathOne = new XMLHttpRequest();
+                nastyPathOne.onreadystatechange = function () {
+
+                    console.log(nastyPathOne.readystate);
+                    console.log(nastyPathOne.status);
+                };
+
+                nastyPathOne.open("GET", 54, true);
+                nastyPathOne.send();
+//                result: not found
+
+//                Changing the url to a valid url that does not return data
+                var nastyPathTwo = new XMLHttpRequest();
+                nastyPathTwo.onreadystatechange = function () {
+
+                    console.log(nastyPathTwo.readystate);
+                    console.log(nastyPathTwo.status);
+                };
+
+                nastyPathTwo.open("GET", "https://www.google.com/", true);
+                nastyPathTwo.send();
+                //not allowed to access because google has a no access header on it
+
+                //the following is nasty path for null data value
+                var nastyPathThree = new XMLHttpRequest();
+                nastyPathThree.onreadystatechange = function () {
+
+                    console.log(nastyPathThree.readystate);
+                    console.log(nastyPathThree.status);
+                };
+
+                nastyPathThree.open("GET", null, true);
+                nastyPathThree.send();
+//              result is undefined
+
+//                having the request to get it from post
+                var nastyPathFour = new XMLHttpRequest();
+                nastyPathFour.onreadystatechange = function () {
+
+                    console.log(nastyPathFour.readystate);
+                    console.log(nastyPathFour.status);
+                };
+
+                nastyPathFour.open("GET", data, true);
+                nastyPathFour.send();
+//                comes back undefined
+
+//              having have the get spot be dog
+//              var nastyPathTwo = new XMLHttpRequest();
+                nastyPathFive.onreadystatechange = function () {
+
+                    console.log(nastyPathFive.readystate);
+                    console.log(nastyPathFive.status);
+                };
+
+                nastyPathFive.open("dog", data, true);
+                nastyPathFive.send();
+                // the return is not defined
+
+//                http_request.open("123", data, true);
+                var nastyPathSix = new XMLHttpRequest();
+                nastyPathSix.onreadystatechange = function () {
+
+                    console.log(nastyPathSix.readystate);
+                    console.log(nastyPathSix.status);
+                };
+
+                nastyPathSix.open("123", data, true);
+                nastyPathSix.send();
+//                comes back undefined
+            }
+
+        </script>
+    </head>
+    <body>
+        <header>
+            <?php include $_SERVER['DOCUMENT_ROOT'] . '/CIT261Group/JEBSandbox/modules/header.php'; ?>
+            <h2>Using XMLHTTPRequest to Consume a JSON Web Service</h2>
+        </header>
+        <h3>What This Does</h3>
+        <p>
+            When the button (down below) is pressed it executes the script on this page.
+            When it executes, a new xmlhttp request is made. 
+            Once this request is made, it finds the proper URL, in this case it is sored in the data variable.
+            After finding the data variable, and thus the url, it sends the request to that site, asking for its information.
+            The information is then trucked back to inside the function.
+            This information is then stored in the countryAbrev variable.
+            In the same act as storing the variable, it gets parsed.
+            This is done so the the function may be able to go through and look at the data that is in the countryAbrev variable.
+        </p>
+        <p> Here is a resource that helped me understand: <a href="https://www.youtube.com/watch?v=SjLJ8Dyuywg" title="YouTube Tutorial">https://www.youtube.com/watch?v=SjLJ8Dyuywg</a></p>
+        <h3>JSON</h3>
+        <p>
+            JSON is a way of writing information in an organized way.
+            It is like using MLA format versus APA.
+            There will be different page written about this topic.
+            If you want to see what JSON looks like, follow the link that is <a href="http://services.groupkt.com/country/get/all" title="Json to be consumed">here</a>.
+            This site is the same site that I have used in my example.
+            Or you can right click on this page, click inspect, and a window will pop up with the code for this page. 
+            Click on the console tab, and that is the same data that is in countryAbrev.
+        </p>
+        <h3>The onreadystatechange event</h3>
+        <h4>What is the onreadystatechange event?</h4>
+        <p>This is like a variable. It stores a function so that when ready state portion says "go", the function is called and it executes.</p>
+        <h4>readyState</h4>
+        <p>
+            There are 5 different stages to this particular attribute.
+        </p>
+        <ol start="0">
+            <li>Request not initialized</li>
+            <li>Server connection established</li>
+            <li>Request received</li>
+            <li>Processing request</li>
+            <li>Request finished and response is ready</li>
+        </ol>
+        <h4>status</h4>
+        <p>
+            200:"OK" (In other words, ready to go)<br>
+            404: page note found
+        </p>
+        <br>
+        <section class="workingExample">
+            <h3>Working Example:</h3>
+
+            <button type = "button" onclick = "loadJSON()"> Show Countries abbreviation </button>
+            <p id="DisplayCountry">Country will display here</p>
+            <p id="TwoLetter">Two letter Code will display here</p>
+            <p id="ThreeLetter">Three letter Code will display here</p>
+        </section>
+        <section class="code">
+            <h3> The Script Written:</h3>
+
+            <samp>
+                &lt;script&gt;<br />
+                function loadJSON() {<br />
+                var data = "http://services.groupkt.com/country/get/all";<br />
+                var http_request = new XMLHttpRequest();<br />
+                http_request.onreadystatechange = function () {<br />
+                <br />
+                if (http_request.readyState == 4) {<br />
+                console.log(http_request.responseText);<br />
+                //                        Javascript function JSON.parse to parse JSON data<br />
+                var countryAbrev = JSON.parse(http_request.responseText);<br />
+                <br />
+                //                       countryAbrev variable now contains the data structure and can be accessed as countryAbrev.RestResponse.result[i].attribute<br />
+                document.getElementById("DisplayCountry").innerHTML = countryAbrev.RestResponse.result[0].name;<br />
+                document.getElementById("TwoLetter").innerHTML = countryAbrev.RestResponse.result[0].alpha2_code;<br />
+                document.getElementById("ThreeLetter").innerHTML = countryAbrev.RestResponse.result[0].alpha3_code;<br />
+                }<br />
+                };<br />
+                <br />
+                http_request.open("GET", data, true);<br />
+                http_request.send();<br />
+                }<br />
+                <br />
+                &lt;/script&gt;<br />
+                &lt;body&gt;<br />
+                &lt;p id="DisplayCountry"&gt;Country will display here&lt;/p&gt;<br />
+                &lt;p id="TwoLetter"&gt;Two letter Code will display here&lt;/p&gt;<br />
+                &lt;p id="ThreeLetter"&gt;Three letter Code will display here&lt;/p&gt;<br />
+                &lt;/body&gt;
+            </samp>
+        </section>
+        <br>
+        <footer role="contentinfo">
+            <div>
+                <?php include $_SERVER['DOCUMENT_ROOT'] . '/CIT261Group/JEBSandbox/modules/footer.php'; ?>
+                <?php echo 'last update: ' . date('F j, Y', getlastmod()) ?>
+            </div>
+        </footer>
+    </body>
+</html>
