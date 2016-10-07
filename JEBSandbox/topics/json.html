@@ -12,7 +12,7 @@ and open the template in the editor.
         <script>
 //            the following set of lines are HappyPath code
 //            this is an example of JSON syntax
-            var teamMember = '{ "team":[' +
+            var teamMemberString = '{ "team":[' +
                     '{"firstName":"Jonathan", "lastName":"Bonin"},' +
                     '{"firstName":"Sam", "lastName":"Witwiky"},' +
                     '{"firstName":"Johnny", "lastName":"Depp"}]}';
@@ -27,10 +27,10 @@ and open the template in the editor.
 
 
 //            this is an example of NastyPath.
-            console.log(teamMember);
+            console.log(teamMemberString);
 
 //            Here is another example of a happy path
-            console.log(JSON.parse(teamMember));
+            console.log(JSON.parse(teamMemberString));
 //            result: console.log displays as object
 
 //            Here is another example of a nasty path
@@ -39,22 +39,22 @@ and open the template in the editor.
 //            result: console.log displays null
 
 //            The following is also nasty path
-            var obj = JSON.parse(teamMember);
-            console.log(obj);
+            var teamAssociativeArray = JSON.parse(teamMemberString);
+            console.log(teamAssociativeArray);
 //            result: displays as result in console.log
 
 //            The follwoig code is HappyPath. 
 //            Although it does not display all of the values. 
 //            This was copied from the internet
-            obj = JSON.parse(teamMember);
-            document.getElementById("demo").innerHTML =
-                    obj.team[1].firstName + " " + obj.team[1].lastName;
+            function domManipulation() {
+                document.getElementById("demo").innerHTML =
+                        teamAssociativeArray.team[1].firstName + " " + teamAssociativeArray.team[1].lastName;
+            }
 
 //            The following is NastyPath
-            for (var i = 0; i < teamMember.length; i++) {
-                obj = JSON.parse(teamMember);
-                document.getElementById("demo").innerHTML =
-                        obj.team[i].firstName + " " + obj.team[i].lastName;
+            for (var i = 0; i < teamMemberString.length; i++) {
+//                document.getElementById("demo").innerHTML =
+//                        obj.team[i].firstName + " " + obj.team[i].lastName;
             }
 //            result: Uncaught TypeError: Cannot read property 'firstName' of undefined
 
@@ -63,10 +63,31 @@ and open the template in the editor.
 //                  console.log(obj);
 //                  console.log(obj.team.length);
 
-            for (var i = 0; i < list.teamMember.length; i++) {
-                list = JSON.parse(teamMember);
-                console.log(list.teamMember[i].firstName + ' ' + list.teamMember[i].lastName + "<br>");
+            for (var i = 0; i < teamAssociativeArray.length; i++) {
+                list = JSON.parse(teamMemberString);
+                console.log(list[i].firstName + ' ' + list[i].lastName + "<br>");
             }
+
+//            Stringify
+
+            var string = "The man in the wild shall not come to be.";
+            var parsedString = JSON.stringify(string);
+            console.log(parsedString);
+
+            console.log(JSON.stringify({true: "I am green", false: "thou are a man"}));
+//            {"true":"I am green","false":"thou are a man"}
+            
+            //nasty path the qoutes are needed single qoutes won't work either.
+//            console.log(JSON.stringify({true: I am green, false: thou are a man}));
+            //result unexpected identifier
+            //result a secondary error is created saying that domManipulation is not defined
+
+            console.log(JSON.stringify({x: 5, y: 8}));
+            //{"x":5,"y":8}
+            
+            console.log (JSON.stringify(teamAssociativeArray));
+            // reult json is printed
+            //converted json to string to json, parsed and then stringified
         </script>
     </head>
     <body>
@@ -87,19 +108,18 @@ and open the template in the editor.
             This looks a lot like HTML.
             (That is because HTML is based on XML.)
         </p>
-        <p id = "demo"></p>
+        <p id = "demo"></p><script>domManipulation();</script>
         <p>
             example of JSON:
         </p>
         <code>
-            var teamMember = '{ "team":[' +<br />
+            var teamMemberString = '{ "team":[' +<br />
             '{"firstName":"Jonathan", "lastName":"Bonin"},' +<br />
-            '{"firstName":"Jonathan", "lastName":"Harmon"},' +<br />
-            '{"firstName":"Andrew", "lastName":"Thurman"}]}'; 
+            '{"firstName":"Sam", "lastName":"Witwiky"},' +<br />
+            '{"firstName":"Johnny", "lastName":"Depp"}]}'; 
         </code>
         <p> just to show the difference, here is what XML looks like:</p>
         <code>
-            &lt;?xml version="1.0" encoding="UTF-8"?&gt;<br />
             &lt;note&gt;<br />
             &lt;to&gt;Tove&lt;/to&gt;<br />
             &lt;from&gt;Jani&lt;/from&gt;<br />

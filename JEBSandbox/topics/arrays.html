@@ -8,6 +8,8 @@
             var fruit = ["Kiwi", "orange", "bannana", "apple", "peach", "plum"];
             console.log(fruit);
 
+            var empty = [];
+
 //            The following is a self declaring function that pushes another (mango) to the end of the array
             (function pushFruit() {
                 fruit.push("mango");
@@ -65,6 +67,56 @@
 //            result: 3 items where expect to be taken off, but only one was.
 
 // assuming the same will happen with unshift and shift
+
+            //popwhen nothing is in the array
+            (function popEmpty() {
+                empty.pop();
+                console.log(empty);
+            }());
+            //result, nothing happens really, displays as an empty array
+
+            //shift when nothing is in the array
+            (function shiftEmpty() {
+                empty.shift();
+                console.log(empty);
+            }());
+            //nothing reall happens, displays as an empty array
+
+            //push null what happens?
+            (function pushNulEmpty() {
+                empty.push(null);
+                console.log(empty);
+            }());
+            //result, adds a null position to the array
+
+            //splice at positon 10 when three items are in the array
+            (function addLateToFruit() {
+                fruit.splice(10, 0, "Am I late?");
+                console.log(fruit);
+            }());
+            //result, adds to the end of the array fruit[6]
+
+            //delete more than what is in the array for splice
+            (function deSpliceFruit() {
+                fruit.splice(2, 30);
+                console.log(fruit);
+            }());
+            //reuslt, anything at position 2 or higher gets deleted. preceding position 2 stays
+
+            //give a negative number for a position in splice
+            (function TooEarlyToFruit() {
+                fruit.splice(-2, 2, "Am I to Early?");
+                console.log(fruit);
+            }());
+            //the array seems to have been replace by the string I gave in
+
+            //declare something at position 10 when there are 5 things in the array cars[0]
+            empty[20] = "Will I be here?";
+            // Nothing happens
+
+            //what if the position is negative cars[0]
+            empty[-20] = "Will I be here still?";
+            //Nothing happens
         </script>
     </head>
     <body>
