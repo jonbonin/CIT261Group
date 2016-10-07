@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>Arrays</h1>
+
+<script type="text/javascript">
+
+//Declaring an array
+var colors = new Array(6);
+
+//Accessing an array
+var brandOfCars = new Array("Dodge","Ford","GMC","Toyota","Honda");
+document.write(brandOfCars[1]);
+
+//Looping through an array
+var breeds = [ "Lab", "Golden Retriever", "German Shepard","Doberman","Rottweiler","Beagle" ];
+document.write("<br><br>")
+
+for (var i = 0; i < breeds.length; i++)
+{
+	document.write("That breed of dog is a " + breeds[i] + ". <br>");
+}
+
+document.write("<br>");
+
+//Inputing into an array
+colors[0] = "Blue";
+colors[1] = "Yellow";
+colors[2] = "Green";
+colors[3] = "Orange";
+colors[4] = "Violet";
+colors[5] = "Black";
+
+for (var i = 0; i < colors.length; i++)
+{
+	document.write(colors[i] + "<br>");
+}
+
+//Passing an array as a parameter
+function namesOfCountriesList(countries)
+{
+	document.write("<br>");
+	
+	for (var i = 0; i < countries.length; i++)
+	{
+		document.write(countries[i] + "<br>");
+	}
+}
+
+var countries = ["USA","Russia","UK","Ireland","France","Japan"];
+namesOfCountriesList(countries);
+
+//Associative Array
+	
+	//According to W3 Schools Javascript doesn't use associative arrays
+			
+			//"Many programming languages support arrays with named indexes."
+
+			//"Arrays with named indexes are called associative arrays (or hashes)."
+
+			//"JavaScript does not support arrays with named indexes."
+
+			//"In JavaScript, arrays always use numbered indexes."   
+</script>
+
+<h2>Nasty Paths</h2>
+<li>Not using square brackets</li>
+	<!--
+	colors[0] = "Blue";
+colors(1) = "Yellow";
+colors(2) = "Green";
+-->
+	
+<li>Using an associative array</li>
+	<!--
+	breed["dog"] = "Lab";
+	breed["cat"] = "Tabby";
+	breed["cow"] = "Holstein";
+
+	-->
+<li>Forgetting that '0' is the beginning of the index</li>
+	<!--
+		for (var i = 1; i < countries.length; i++)
+	{
+		document.write(countries[i] + "<br>");
+	}
+	-->
+<li>Using square brackets when passing through a function</li>
+	<!--
+	var countries = ["USA","Russia","UK","Ireland","France","Japan"];
+namesOfCountriesList(countries[]);
+-->
+
+<li>Not using parenthesis when setting an array value to text</li>
+	<!--
+	colors[0] = Blue;
+	-->
+<li>Not using the correct number to loop through an array index</li>
+	<!--
+	for (var i = 0; i < 22; i++)
+	{
+		document.write(countries[i] + "<br>");
+	}
+	-->
+</body>
+</html>
+

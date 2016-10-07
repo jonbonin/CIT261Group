@@ -1,0 +1,33 @@
+.red{
+		color: red;
+}
+
+.current_text{
+	font-family: 'Cormorant Garamond', serif;
+	font-size: 12px;
+}
+
+.current_image{
+	background-image: url("http://www.timetoowntime.com/img/meditation.png");
+	height: 200px;
+	width: 30%;
+	margin-left: auto;
+	margin-right: auto;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-border: 1px solid blue;
+	overflow-x: hidden;
+}
+
+.change_color{
+	color:blue;
+}
+
+.change_text{
+	font-family: 'Ruslan Display', cursive;
+	font-size: 36px;
+}
+
+.change_image{
+	background-image: url("http://www.timetoowntime.com/img/sun.png");
+}

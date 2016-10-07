@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        /*simple container to hold divs*/
+        .container {
+            width :300px;
+            height: 300px;
+        }
+        
+        /*simple red square that uses animation 'example' for 4seconds*/
+        .demo {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            animation-name: example;
+            animation-duration: 4s;
+        }
+
+        /* example animation using 'from' and 'to' keywords */
+        @keyframes example {
+            from {background-color: red;}
+            to {background-color: yellow;}
+        }
+
+        /*simple red square that uses animation 'example2' for 4seconds*/
+        .demo2 {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            animation-name: example2;
+            animation-duration: 4s;
+        }
+
+        /* example2 animation using percentage keyframes */
+        @keyframes example2 {
+            0%   {background-color: red;}
+            25%  {background-color: yellow;}
+            50%  {background-color: blue;}
+            100% {background-color: green;}
+        }
+
+        /*simple red square that uses animation 'example3' for 4seconds*/
+        .demo3 {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            position: relative;
+            animation-name: example3;
+            animation-duration: 4s;
+        }
+
+        /* example3 animation changes color and square position */
+        @keyframes example3 {
+            0%   {background-color:red; left:0px; top:0px;}
+            25%  {background-color:yellow; left:200px; top:0px;}
+            50%  {background-color:blue; left:200px; top:200px;}
+            75%  {background-color:green; left:0px; top:200px;}
+            100% {background-color:red; left:0px; top:0px;}
+        }
+
+        /*simple red square that uses animation 'example3' for 4seconds 3 times*/
+        .demo4 {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            position: relative;
+            animation-name: example3;
+            animation-duration: 4s;
+            animation-iteration-count: 3;
+        }
+        
+        /*simple red square that uses animation 'example3' for 4seconds infintely, and alternates*/
+        .demo5 {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            position: relative;
+            animation-name: example3;
+            animation-duration: 4s;
+            animation-iteration-count: infinite;
+            animation-direction: alternate;
+        }
+
+        
+    </style>
+</head>
+<body>
+
+    <p>Uses animation with "from" and "to" keywords to change background color</p>
+    <div class="demo"></div>
+
+    <p>Uses animation with % declarations to change background color</p>
+    <div class="demo2"></div>
+    
+    <p>Uses animation with % declarations to change background color and position</p>
+    <div class="container"><div class="demo3"></div></div>
+    
+    <p>Uses animation iteration to repeat animation</p>
+    <div class="container"><div class="demo4"></div></div>
+    
+    <p>Uses animation direction alternate and iteration infinite</p>
+    <div class="container"><div class="demo5"></div></div>
+
+
+</body>
+</html>
+
