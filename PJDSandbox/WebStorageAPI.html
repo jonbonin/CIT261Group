@@ -1,20 +1,82 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<title>WebStorageAPI</title>
+	<meta charset="UTF-8">
 	<script>
+		<!-- Check to see if browser supports Web Storage API -->
+		function supportsLocalStorage()
+		{
+			return ('localStorage' in window) && window['localStorage'] !== null;
+		}
+		
+		function supportsSessionStorage()
+		{
+			return ('sessionStorage' in window) && window['sessionStorage'] !== null;
+		}
+		
+		<!-- HAPPY PATH: -->
 		//WEB STORAGE API is GLOBAL object! (stored in window object ie: window.localStorage or window.sessionStorage)
-		//Web Storage can be turned off by user, so use fallback mechanism when unavailable.
+		//Used in place of cookies which use both client and server-side storage, has size limitations, and uses bandwidth.
+		//Is always stored client-side (in browser), rather than server-side. This saves bandwidth, allows large data storage, is more secure.
+		//Web Storage can be turned off by user(like turning off cookies), so use fallback mechanism when unavailable.
 		//can only store strings, but can store and retrieve JSON objects with JSON.stringify() and JSON.parse().
+		
 		//session storage API - use for browser session (disappears on close)
-		sessionStorage.setItem('myKey', 'myValue');
-		var myVar = seesionStorage.getItem('myKey');
+		if(supportsSessionStorage())
+		{
+			sessionStorage.setItem('myKey', 'myValue');
+			var myVar1 = sessionStorage.getItem('myKey');
+		}
+		else
+		{
+			alert('Sorry, your browser does not support Web Storage');
+		}
 		
 		//local storage API - use for offline storage (remains after close)
 		//When data stored in local, storage event is fired in other windows/tabs!
-		localStorage.setItem('myKey', 'myValue');
-		var myVar = localStorage.getItem('myKey');
+		if(supportsLocalStorage())
+		{
+			localStorage.setItem('myKey2', 'myValue2');
+			var myVar2 = localStorage.getItem('myKey2');
+		}
+		else
+		{
+			alert('Sorry, your broswer does not support Web Storage');
+		}
 		
 		window.addEventListener('storage', function(event) {console.log('The value for ' + event.key + ' was changed from' + event.oldValue + ' to ' + event.newValue);}, false);
+		
+		<!-- NASTY PATH: -->
+		sessionStorage.setItem('myKey', 'myValue');
+		var myVar2 = sessionStorage.getItem(2); //can only accept strings
+		
+		
+		<!-- ASSOCIATIVE ARRAYS -->
+		//indexed with names rather than integers!
+		<!-- HAPPY PATH: -->
+		//if creating an object with a status (like mouseover, normal, clicked) for an array of images:
+		var imageState = new Object;
+		var x = document.images;
+		function imageStatus() {
+			for (var i = 0; i < x.length; i++)
+			{
+				var imageName = x[i].name;
+				imageState['imageName'] = 'normal'; //referenced like an index, creates one property for each image!
+				for (var i in imageState)
+				{
+					console.log('imageState[\''+i+'\'] is ' + imageState[i]);
+				}
+			}
+			
+			<!-- NASTY PATH: -->
+			for (var i = 0; i < x.length; i++)
+			{
+				var imageName = x[i].name;
+				imageState.imageName = 'normal'; // only creates one property and value! (not enough for every image)
+			}
+		}
+		
 	</script>
 </head>
 <body>
