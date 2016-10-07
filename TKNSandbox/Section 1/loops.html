@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>Loops</h1>
+
+<script type="text/javascript">
+
+//Basic For Loop
+for (var i = 0; i < 9; i+=3)
+{
+	document.write("This is my example <br>");
+}
+document.write("<br>");
+
+//Basic While Loop
+var number = 10;
+
+while ( number > 0)
+{
+	document.write("This is text I have written <br>");
+	number--;
+}
+
+//A Nested Loop
+for (var i = 0; i < 13; i++)
+{
+	document.write("<br>")
+	for (var j = 0; j < 13; j++)
+	{
+		document.write(i * j + "  ");
+	}
+}
+
+//Using a Loop to Sort through an Array
+var names = [ "Tanner", "Jon", "Peyton","Matt" ];
+document.write("<br><br>")
+
+for (var i = 0; i < names.length; i++)
+{
+	document.write("Hi I am " + names[i] + "<br>");
+}
+
+</script>
+
+<h2>Nasty Paths</h2>
+<li>Adding an extra semi-colon in a for loop</li>
+	<!--for (var i = 0; i < 10; i++;)-->
+	
+<li>Creating an infinite loop</li>
+	<!--for (var i = 0; i < 10; i--)-->
+	
+<li>Forgetting to declare your intial condition</li>
+<!--while ( number > 0)
+{
+	document.write("This is text I have written <br>");
+	number--;
+}-->
+
+<li>Using inconsistent variables</li>
+<!--for (var i = 0; j < 10; k++)-->
+
+<li>Bad code in your block statement</li>
+<!--for (var i = 0; i < 9; i+=3)
+{
+	document.write("This is my example <br>");
+}-->
+
+<li>Forgetting to increment in a while loop</li>
+<!--var number = 10;
+
+while ( number > 0)
+{
+	document.write("This is text I have written <br>");
+	number--;
+}-->
+
+<li>Not using the ".length" function when looping through an array</li>
+<!--var names = [ "Tanner", "Jon", "Peyton","Matt" ];
+document.write("<br><br>")
+
+for (var i = 0; i < names.length; i++)
+{
+	document.write("Hi I am " + names[i] + "<br>");
+}-->
+
+<li>Putting code in the wrong place in a nested loop</li>
+<!--for (var i = 0; i < 13; i++)
+{
+	
+	for (var j = 0; j < 13; j++)
+	{
+		//This break is now in the wrong place
+		//It won't be possible to form a table of numbers
+		document.write("<br>")
+		document.write(i * j + "  ");
+	}
+}
+-->
+
+</body>
+</html>
+

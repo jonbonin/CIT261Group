@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>Conditional Statements</h1>
+
+<script type="text/javascript">
+
+//If statements
+var money = prompt ("How much money do you have?");
+
+if (money < 3)
+{
+	document.write("No icecream for you!");
+}
+
+document.write("<br><br>");
+
+//Else statements
+var age = prompt ("How old are you?");
+
+if (age < 18)
+{
+	document.write("We don't serve your kind here!");
+}
+
+else
+{
+	document.write("What would that be today sir?");
+}
+
+document.write("<br><br>");
+
+//Else If 
+var happy_Index = prompt("On a scale of 1 to 10, how happy are you?");
+
+if (happy_Index > 7)
+{
+	document.write("Wow! Awesome! I am glad to hear that.");
+}
+
+else if (happy_Index > 3)
+{
+	document.write("Good. Everything thing seems to be alright then.");
+}
+
+else
+{
+	document.write("Okay then. What seems to be bothering you?");
+}
+
+document.write("<br><br>");
+
+//Switch statements
+var month = prompt("What was the number of the month you were born in?");
+var input = parseInt(month);
+switch (input) {
+    case 1:
+        birthday = "January";
+		document.write("Nice. You were born in " + birthday + ".");
+        break;
+    case 2:
+        birthday = "February";
+		document.write("Nice. You were born in " + birthday + ".");
+        break;
+    case 3:
+        birthday = "March";
+		document.write("Nice. You were born in " + birthday + ".");
+        break;
+    case 4:
+        birthday = "April";
+		document.write("Nice. You were born in " + birthday + ".");
+        break;
+    case 5:
+        birthday = "May";
+		document.write("Nice. You were born in " + birthday + ".");
+        break;
+	case 6:
+        birthday = "June";
+		document.write("Nice. You were born in " + birthday + ".");
+        break;
+    case 7:
+        birthday = "July";
+		document.write("Nice. You were born in " + birthday + ".");
+        break;
+    case 8:
+        birthday = "August";
+		document.write("Nice. You were born in " + birthday + ".");
+        break;
+    case 9:
+        birthday = "September";
+		document.write("Nice. You were born in " + birthday + ".");
+        break;
+    case 10:
+        birthday = "October";
+		document.write("Nice. You were born in " + birthday + ".");
+        break;
+    case 11:
+        birthday = "November";
+		document.write("Nice. You were born in " + birthday + ".");
+        break;
+	case 12:
+        birthday = "December";
+		document.write("Nice. You were born in " + birthday + ".");
+		break;
+	default:
+		document.write("Invalid input");
+}
+
+</script>
+<h2>Nasty Paths</h2>
+	
+	<li>Putting a semi-colon at the end of an if statement</li>
+	<!--if (money < 3);-->
+	
+	<li>Incorrect comparison operator</li>
+	<!--if (age < 21)
+{
+	document.write("Oh great you obviously old enough to serve alcohol to!");
+}-->
+
+	<li>Messing up the syntax of the 'else if' statement</li>
+	<!--if else (happy_Index > 3)-->
+	
+	<li>Putting the conditional statements out of order</li>
+	<!--if (happy_Index > 7)
+{
+	document.write("Wow! Awesome! I am glad to hear that.");
+}
+
+else
+{
+	document.write("Okay then. What seems to be bothering you?");
+}
+
+else if (happy_Index > 3)
+{
+	document.write("Good. Everything thing seems to be alright then.");
+}-->
+	
+	<li>Using the wrong case in a switch statement</li>
+	<!--var month = prompt("What was the number of the month you were born in?");
+var input = parseInt(month);
+switch (input) {
+    case oranges:
+        birthday = "January";
+		document.write("Nice. You were born in " + birthday + ".");
+        break;
+    case 2:
+        birthday = "February";
+		document.write("Nice. You were born in " + birthday + ".");
+        break;
+    case 3:   .....-->
+	
+	<li>Forgetting to include a break after your code has been executed in a block statement</li>
+	<!--var month = prompt("What was the number of the month you were born in?");
+var input = parseInt(month);
+switch (input) {
+    case 1:
+        birthday = "January";
+		document.write("Nice. You were born in " + birthday + ".");
+    case 2:
+        birthday = "February";
+		document.write("Nice. You were born in " + birthday + ".");
+    case 3:   .......-->
+	
+	<li>Adding a break statement under the deftault statement</li>
+	<!--default:
+		document.write("Invalid input");
+		break;
+}-->
+	
+	<li>Making sure to have the right input for your conditional</li>
+	<!--var money = prompt ("How much money do you have?");
+		var cars = 5;
+if (cars < 3)
+{
+	document.write("No icecream for you!");
+}-->	
+	
+	<li>Forgetting to have your default statement</li>
+	<!--case 13:
+		document.write("Invalid input");
+}
+-->
+	
+</body>
+</html>

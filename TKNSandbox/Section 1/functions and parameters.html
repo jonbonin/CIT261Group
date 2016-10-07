@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>Functions and Parameters</h1>
+
+<script type="text/javascript">
+
+//Basic function
+function basic()
+{
+	document.write("Hello World! <br><br>");
+}
+
+basic();
+
+//Function with parameters
+function areaCube(a,b,c)
+{
+	var volume = a * b * c;
+	
+	return volume;
+}
+
+var x = prompt("Enter in the length.");
+var y = prompt("Enter in the width.");
+var z = prompt("Enter in the height.");
+
+document.write("The volume of your cube is " + areaCube(x,y,z) + " units. <br><br>");
+
+//Using multiple functions
+function promptAge()
+{
+	var age = prompt("What is your age?");
+	 
+	return age;
+}
+
+function giveMessage(age)
+{
+	document.write(age + " is a good age to be.");
+}
+
+var age = promptAge();
+giveMessage(age);
+
+</script>
+<h2>Nasty Paths</h2>
+<li>Forgetting the to add function when you declare </li>
+	<!--
+basic()
+{
+	document.write("Hello World! <br><br>");
+}-->
+
+<li>Forgetting to use the keyword return within your function</li>
+<!--function areaCube(a,b,c)
+{
+	var volume = a * b * c;
+}-->
+
+<li>Mixing up the keyword function and the function's name</li>
+<!-- basic Function()
+{
+	document.write("Hello World! <br><br>");
+}-->
+
+<li>Putting in incorrect parameters</li>
+<!--
+function areaCube(a,b,c)
+{
+	var volume = a * b * c;
+	
+	return volume;
+}
+
+var x = prompt("Enter in the length.");
+var y = prompt("Enter in the width.");
+var z = prompt("Enter in the height.");
+
+document.write("The volume of your cube is " + areaCube(z,z,z) + " units. <br><br>");
+-->
+
+<li>Putting in the wrong number of parameters</li>
+<!--
+function areaCube(a,b,c)
+{
+	var volume = a * b * c;
+	
+	return volume;
+}
+
+var x = prompt("Enter in the length.");
+var y = prompt("Enter in the width.");
+var z = prompt("Enter in the height.");
+
+document.write("The volume of your cube is " + areaCube(x) + " units. <br><br>");
+-->
+
+<li>Calling the function in the wrong location</li>
+<!--
+var age = promptAge();
+giveMessage(age);
+
+function promptAge()
+{
+	var age = prompt("What is your age?");
+	 
+	return age;
+}
+
+function giveMessage(age)
+{
+	document.write(age + " is a good age to be.");
+}
+-->
+
+<li>The name for the function doesn't describe what the function does</li>
+<!--
+function yellow()
+{
+	document.write("Hello World! <br><br>");
+}
+
+yellow();-->
+
+<li>The function that is calling doesn't match the function that needs to be called</li>
+<!--
+function basic()
+{
+	document.write("Hello World! <br><br>");
+}
+
+basik();
+
+</body>
+</html>
+
