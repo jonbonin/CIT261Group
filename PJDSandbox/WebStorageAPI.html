@@ -5,51 +5,58 @@
 	<meta charset="UTF-8">
 	<script>
 		<!-- Check to see if browser supports Web Storage API -->
-		function supportsLocalStorage()
+		function event()
 		{
-			return ('localStorage' in window) && window['localStorage'] !== null;
+			function supportsLocalStorage()
+			{
+				return ('localStorage' in window) && window['localStorage'] !== null;
+			}
+			
+			function supportsSessionStorage()
+			{
+				return ('sessionStorage' in window) && window['sessionStorage'] !== null;
+			}
+			
+			<!-- HAPPY PATH: -->
+			//WEB STORAGE API is GLOBAL object! (stored in window object ie: window.localStorage or window.sessionStorage)
+			//Used in place of cookies which use both client and server-side storage, has size limitations, and uses bandwidth.
+			//Is always stored client-side (in browser), rather than server-side. This saves bandwidth, allows large data storage, is more secure.
+			//Web Storage can be turned off by user(like turning off cookies), so use fallback mechanism when unavailable.
+			//can only store strings, but can store and retrieve JSON objects with JSON.stringify() and JSON.parse().
+			
+			//session storage API - use for browser session (disappears on close)
+			if(supportsSessionStorage())
+			{
+				sessionStorage.setItem('Key', 'Value');
+				var myVal1 = sessionStorage.getItem('Key');
+				console.log('It works!');
+			}
+			else
+			{
+				alert('Sorry, your browser does not support Web Storage.');
+			}
+			
+			//local storage API - use for offline storage (remains after close)
+			//When data stored in local, storage event is fired in other windows/tabs!
+			if(supportsLocalStorage())
+			{
+				localStorage.setItem('Key', 'Value');
+				var myVal2 = localStorage.getItem('Key');
+				console.log('It works!');
+			}
+			else
+			{
+				alert('Sorry, your browser does not support Web Storage.');
+			}
+			return;
 		}
 		
-		function supportsSessionStorage()
-		{
-			return ('sessionStorage' in window) && window['sessionStorage'] !== null;
-		}
-		
-		<!-- HAPPY PATH: -->
-		//WEB STORAGE API is GLOBAL object! (stored in window object ie: window.localStorage or window.sessionStorage)
-		//Used in place of cookies which use both client and server-side storage, has size limitations, and uses bandwidth.
-		//Is always stored client-side (in browser), rather than server-side. This saves bandwidth, allows large data storage, is more secure.
-		//Web Storage can be turned off by user(like turning off cookies), so use fallback mechanism when unavailable.
-		//can only store strings, but can store and retrieve JSON objects with JSON.stringify() and JSON.parse().
-		
-		//session storage API - use for browser session (disappears on close)
-		if(supportsSessionStorage())
-		{
-			sessionStorage.setItem('myKey', 'myValue');
-			var myVar1 = sessionStorage.getItem('myKey');
-		}
-		else
-		{
-			alert('Sorry, your browser does not support Web Storage');
-		}
-		
-		//local storage API - use for offline storage (remains after close)
-		//When data stored in local, storage event is fired in other windows/tabs!
-		if(supportsLocalStorage())
-		{
-			localStorage.setItem('myKey2', 'myValue2');
-			var myVar2 = localStorage.getItem('myKey2');
-		}
-		else
-		{
-			alert('Sorry, your broswer does not support Web Storage');
-		}
-		
-		window.addEventListener('storage', function(event) {console.log('The value for ' + event.key + ' was changed from' + event.oldValue + ' to ' + event.newValue);}, false);
+		localStorage.name = document.getElementById('storeValue');
+		console.log(localStorage.name);
 		
 		<!-- NASTY PATH: -->
 		sessionStorage.setItem('myKey', 'myValue');
-		var myVar2 = sessionStorage.getItem(2); //can only accept strings
+		var myVal3 = sessionStorage.getItem(2); //can only accept strings
 		
 		
 		<!-- ASSOCIATIVE ARRAYS -->
@@ -80,6 +87,9 @@
 	</script>
 </head>
 <body>
+	<div id="input">
+		<input type="text" name="storeValue" placeholder="Enter Value to store." />
+	</div>
 	<script>
 	</script>
 </body>
