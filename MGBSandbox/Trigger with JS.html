@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        /*simple red square using animation myMove for 2seconds infintely, starts paused*/
+        .demo {
+            width: 100px;
+            height: 100px;
+            background: red;
+            position: relative;
+            animation: myMove 2s infinite;
+            animation-play-state: paused;
+        }
+
+        /*myMove animation moves square to left*/
+        @keyframes myMove {
+            from {left: 0px;}
+            to {left: 200px;}
+        }         
+    </style>
+
+</head>
+
+<body>
+
+    <!--Play and pause buttons to start/pause animation -->
+    <button onclick="myPlayFunction()">Play</button>
+    <button onclick="myPauseFunction()">Pause</button>
+
+
+    <script>
+        //function called from play button, changes animation to 'running'
+        function myPlayFunction() {
+            document.getElementById("myDIV").style.animationPlayState = "running";
+        }
+        //function called from pause button, changes animation to 'paused'
+        function myPauseFunction() {
+            document.getElementById("myDIV").style.animationPlayState = "paused";
+        }        
+    </script>
+
+    <div class="demo" id="myDIV"></div>   
+
+</body>
+</html>
+
