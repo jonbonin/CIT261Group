@@ -14,6 +14,22 @@ if (money < 3)
 	document.write("No icecream for you!");
 }
 
+//Nasty path - using a string when a value is needed
+//var money = "four";
+//if (money < 3) {console.log("hi");}
+//Returns - undefined
+
+//Nasty path - using a negative square root as a value
+//var money = -2; 
+//if (Math.sqrt(money) < 3) {console.log("hi");}
+//Returns - undefined
+
+//Nasty path - using a decimal form number when an integer is needed
+//console.log("How many people will be in your party for the evening?");
+//var people_to_sit = 5.3;
+//console.log("Your in luck we do have a table for " + people_to_sit + ".");
+//Returns - Your in luck we do have a table for 5.3. , which isn't a factual statement to say
+
 document.write("<br><br>");
 
 //Else statements
@@ -53,6 +69,11 @@ document.write("<br><br>");
 
 //Switch statements
 var month = prompt("What was the number of the month you were born in?");
+
+//Nasty path - using a number that is out of range
+ //var month = 32;
+//Returns - Invalid input
+
 var input = parseInt(month);
 switch (input) {
     case 1:

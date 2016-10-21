@@ -14,6 +14,10 @@ function basic()
 
 basic();
 
+//Nasty path - calling the wrong function
+//basics();
+//Returns - VM52:1 Uncaught ReferenceError: basics is not defined(…) , it should have been basic():
+
 //Function with parameters
 function areaCube(a,b,c)
 {
@@ -22,11 +26,40 @@ function areaCube(a,b,c)
 	return volume;
 }
 
-var x = prompt("Enter in the length.");
+//var x = prompt("Enter in the length.");
+var x = [1,2,3];
 var y = prompt("Enter in the width.");
-var z = prompt("Enter in the height.");
+var z = prompt("Enter in the width.");
 
 document.write("The volume of your cube is " + areaCube(x,y,z) + " units. <br><br>");
+
+//Nasty path - passing in too many or too little values
+//var x = prompt("Enter in the length.");
+//var y = prompt("Enter in the width.");
+//var z;
+//document.write("The volume of your cube is " + areaCube(x,y,z) + " units. <br><br>");
+//Returns - The volume of your cube is NaN units. 
+
+//Nasty path - passing in th wrong data type into a function
+//var x = prompt("Enter in the length.");
+//var y = prompt("Enter in the width.");
+//var z = "zebra";
+//document.write("The volume of your cube is " + areaCube(x,y,z) + " units. <br><br>");
+//Returns - The volume of your cube is NaN units. 
+
+//Nasty path - passing in an array when a value is needed
+//var x = [1,2,3];
+//var y = prompt("Enter in the width.");
+//var z = prompt("Enter in the width.");
+//document.write("The volume of your cube is " + areaCube(x,y,z) + " units. <br><br>");
+//Returns - The volume of your cube is NaN units.
+
+//Nasty path - passing in a null
+//var x = prompt("Enter in the length.");
+//var y = prompt("Enter in the width.");
+//var z = "zebra";
+//document.write("The volume of your cube is " + areaCube(x,y,z) + " units. <br><br>");
+//Returns - The volume of your cube is 0 units. 
 
 //Using multiple functions
 function promptAge()

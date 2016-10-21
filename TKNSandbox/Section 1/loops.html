@@ -3,7 +3,7 @@
 <body>
 
 <h1>Loops</h1>
-
+<!-- *** DOCUMENT.WRITE is to never be used AGAIN!!!!!!!!! -->
 <script type="text/javascript">
 
 //Basic For Loop
@@ -13,14 +13,70 @@ for (var i = 0; i < 9; i+=3)
 }
 document.write("<br>");
 
+//Nasty path - wrong comparision operator
+//for (var i = 0; i > 9; i+=3)
+//Returns - Uncaught SyntaxError: Unexpected end of input
+
 //Basic While Loop
-var number = 10;
+var number = "";
 
 while ( number > 0)
 {
 	document.write("This is text I have written <br>");
 	number--;
 }
+
+
+//Nasty path - referencing a wrong variable
+//var temp_num_fh = 95;
+//var temp_num_cl = 95;
+//while ( temp_num_cl > 86)
+//{
+	//console.log("Lets cool it down a bit!");
+	//temp_num_cl -=5;
+//}
+//console.log("It is a nice " + temp_num_cl + " degrees.");
+//Returns - It is a nice 85 degrees. , but little do they realize that is actually quite hot.
+
+
+//Nasty path - using a string 
+//var number = "boat";
+//while ( number > 0)
+//{
+	//document.write("This is text I have written <br>");
+	//number--;
+//}
+//Returns - undefined
+
+
+//Nasty path - using a null
+//var number = "";
+//while ( number > 0)
+//{
+	//document.write("This is text I have written <br>");
+	//number--;
+//}
+//Returns - undefined
+
+
+//Nasty path - bad value in test condition
+// var year = 0;
+//for (var i = 0; i < year; i+=3)
+//Returns - Uncaught SyntaxError: Unexpected end of input, test condition is the middle part
+
+//Nasty path - wrong increment value
+//var yearCounter = 0;
+//var day_by_day = -1;
+//while(yearCounter < 365){
+//console.log("Day " + yearCounter);
+//if (yearCounter == 364)
+//{
+	//console.log("Happy New Years!");
+//}
+//yearCounter+=day_by_day;
+//}
+//Returns - Or rather won't load progam
+
 
 //A Nested Loop
 for (var i = 0; i < 13; i++)
@@ -41,8 +97,17 @@ for (var i = 0; i < names.length; i++)
 	document.write("Hi I am " + names[i] + "<br>");
 }
 
+//Nasty path - referencing the wrong array
+//var animals = ["Cat","Pig","Dog","Dove","Frog"];
+//var colors = ["Black","Pink","Yellow","White","Green"];
+//for (var i = 0; i < 5; i++)
+//{
+	//console.log("There is a " + animals[i] + " " + colors[i] + ".");
+//}
+//Returns - There is a Cat Black. There is a Pig Pink. There is a Dog Yellow. There is a Dove White. There is a Frog Green.
 </script>
 
+<!-- Nasty paths are more so how someone can crash your code such as giving an incorrect value or referencing a garbage database -->
 <h2>Nasty Paths</h2>
 <li>Adding an extra semi-colon in a for loop</li>
 	<!--for (var i = 0; i < 10; i++;)-->

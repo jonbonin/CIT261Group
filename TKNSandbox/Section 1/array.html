@@ -9,9 +9,21 @@
 //Declaring an array
 var colors = new Array(6);
 
+//Nasty path - user intializes the array with a non-integer number
+//var colors2 = new Array(6.5);
+//Return - Invalid array length
+
+//Nasty path - a variable name has already been used by someone else
+//var colors = new Array(8);
+//Returns - empties out array of previous values declared and changes the length of the array
+
 //Accessing an array
 var brandOfCars = new Array("Dodge","Ford","GMC","Toyota","Honda");
 document.write(brandOfCars[1]);
+
+//Nasty path - user puts a wrong input category in to the array
+//var brandOfCars2 = new Array("Dodge","Ford","GMC","Toyota","Honda", "Raptor");
+//Returns - ["Dodge", "Ford", "GMC", "Toyota", "Honda", "Raptor"], user doesn't realize that raptor isn't a brand of car
 
 //Looping through an array
 var breeds = [ "Lab", "Golden Retriever", "German Shepard","Doberman","Rottweiler","Beagle" ];
@@ -32,6 +44,10 @@ colors[3] = "Orange";
 colors[4] = "Violet";
 colors[5] = "Black";
 
+//Nasty path - user forgets that an array starts out at zero
+//console.log(colors[1]);
+// Return - yellow , user wants blue and knows that is the first value in the array
+
 for (var i = 0; i < colors.length; i++)
 {
 	document.write(colors[i] + "<br>");
@@ -51,8 +67,20 @@ function namesOfCountriesList(countries)
 var countries = ["USA","Russia","UK","Ireland","France","Japan"];
 namesOfCountriesList(countries);
 
-//Associative Array
-	
+//Nasty path - values in array aren't in the order that you want them in
+// var countries = ["USA","Russia","UK","Ireland","France","Japan"];
+//Return - ["USA", "Russia", "UK", "Ireland", "France", "Japan"], it is the olympics and the names of the countries need to be in alphabetical order
+
+//Nasty path - duplicate values are included in the array?
+//var cities = ["Boise", "New York", "San Diego", "Miami", "Houston", "Dallas","Dallas"];
+//Return - ["Boise", "New York", "San Diego", "Miami", "Houston", "Dallas", "Dallas"], array contains repeat values
+
+//Nasty path - junk value is included within array
+//var primeNum = [1,2,3,5,7,11,13,17,19,23,29.56.];
+//Returns - Uncaught SyntaxError: Unexpected token ]
+
+//Using an associative array
+
 	//According to W3 Schools Javascript doesn't use associative arrays
 			
 			//"Many programming languages support arrays with named indexes."
