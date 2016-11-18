@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CSS transforms</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            .smallP{
+                display: inline-block;
+                margin-top: 8px;
+            }
+            #degreeScaleValue{
+                z-index: 1;
+            }
+            /*the following do tranform and transitions based on rotate*/
+            /*When a negative number is used for the transition time frame, it is treated like zero seconds*/
+            /*When a string is used for transition time it again acts like zero seconds*/
+            #sectTransformX{
+                width:60px;
+                height:60px;
+                background-color:blue;
+                transition:2s;
+                transform: rotateY(0deg);
+            }
+            #sectTransformY{
+                width:60px;
+                height:60px;
+                background-color:blue;
+                transition:2s;
+                transform: rotateX(0deg);
+            }
+            #sectTransformZ{
+                width:60px;
+                height:60px;
+                background-color:blue;
+                transition:2s;
+                transform: rotateZ(0deg);
+            }
+            #sectTransform3d{
+                width:60px;
+                height:60px;
+                background-color:blue;
+                transition:2s;
+                transform: rotate3d(0,0,0,0deg);
+            }
+            /*the following do transform scale*/
+            #sectTransformScaleX{
+                width:60px;
+                height:60px;
+                background-color:blue;
+                transition:2s;
+                transform: scaleX(inherit);
+            }
+            #sectTransformScaleY{
+                width:60px;
+                height:60px;
+                background-color:blue;
+                transition:2s;
+                transform: scaleY(inherit);
+                margin-left: 33%;
+            }
+            #sectTransformScaleZ{
+                width:60px;
+                height:60px;
+                background-color:blue;
+                transition:2s;
+                transform: scaleZ(inherit);
+                margin-left: 66%;
+            }
+            /*The following moves a section around on a page*/
+            #moveIt{
+                width:60px;
+                height:60px;
+                background-color:blue;
+                transition:2s;
+                position: relative;
+                top: inherit;
+                left: inherit;
+            }
+        </style>
+        <script>
+            function sectionTilt() {
+                var sliderValue = document.getElementById("degreeTiltValue").value;
+                document.getElementById("sectTransformX").style.transform = "rotateY(" + sliderValue + "deg)";
+                document.getElementById("sectTransformY").style.transform = "rotateX(" + sliderValue + "deg)";
+                document.getElementById("sectTransformZ").style.transform = "rotateZ(" + sliderValue + "deg)";
+                document.getElementById("sectTransform3d").style.transform = "rotate3d(" + sliderValue + "," + sliderValue + "," + sliderValue + "," + sliderValue + "deg)";
+            }
+
+            function sectionScale() {
+//                A second value can be added within the paren to account for the width
+                var sliderValue = document.getElementById("degreeScaleValue").value;
+                document.getElementById("sectTransformScaleX").style.transform = "scaleX(" + sliderValue + ")";
+                document.getElementById("sectTransformScaleY").style.transform = "scaleY(" + sliderValue + ")";
+                document.getElementById("sectTransformScaleZ").style.transform = "scaleZ(" + sliderValue + ")";
+            }
+
+            function sectionMove() {
+                var sliderXValue = document.getElementById("degreeXValue").value;
+                var sliderYValue = document.getElementById("degreeYValue").value;
+                document.getElementById("moveIt").style.top = sliderXValue +"px";
+                document.getElementById("moveIt").style.left = sliderYValue +"px";
+            }
+            function sectionMoveTwo() {
+                var sliderXYValue = document.getElementById("degreeXYValue").value;
+                document.getElementById("moveIt").style.top = sliderXYValue +"px";
+                document.getElementById("moveIt").style.left = sliderXYValue +"px";
+            }
+
+        </script>
+    </head>
+    <body>
+        <h2>Transforms</h2>
+        <p>How shall we rotate?</p>
+        <input type="range" id="degreeTiltValue" max="360" value="10" onchange="sectionTilt()">
+        <section id="sectTransformX">RotateX</section><br>
+        <section id="sectTransformY">RotateY</section><br>
+        <section id="sectTransformZ">RotateZ</section><br>
+        <section id="sectTransform3d">Rotate3d</section><br>
+        <hr>
+        <input type="range" id="degreeScaleValue" max="10" value="3" onchange="sectionScale()">
+        <section id="sectTransformScaleX">ScaleX</section><br>
+        <section id="sectTransformScaleY">ScaleY</section><br>
+        <section id="sectTransformScaleZ">ScaleZ</section>
+        <hr>
+        <p class="smallP">Y value:</p> <input type="range" id="degreeXValue" max="100" value="3" onchange="sectionMove()"><br>
+        <p class="smallP">X value:</p> <input type="range" id="degreeYValue" max="100" value="3" onchange="sectionMove()"><br>
+        <p class="smallP">X and Y value:</p> <input type="range" id="degreeXYValue" max="100" onchange="sectionMoveTwo()">
+        <section id="moveIt">Move It!</section>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+    </body>
+</html>

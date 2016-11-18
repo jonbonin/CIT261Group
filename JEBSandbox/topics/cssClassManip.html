@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Manipulating CSS Class Properties Using JavaScript</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            #font{
+                font-family: Georgia, serif;
+            }
+
+            #bkgColour{
+                background-color:blue;
+            }
+
+            #box{
+                height: 60px;
+                width: 60px;
+                position: relative;
+                top: 10px;
+                left: 20px;
+                background-color:red;
+                margin: 0;
+            }
+            button{
+                margin: 2px;
+            }
+        </style>
+        <script>
+            function font() {
+                document.getElementById("font").style.fontFamily = "cursive";
+            }
+
+            function bkgColor() {
+                document.getElementById("bkgColour").style.backgroundColor = "red";
+//                the string is a number
+                document.getElementById("bkgColour").style.backgroundColor = "5";
+//                    Result Nothing happens in the browser, no error in the console.
+                //empty string
+//                document.getElementById("bkgColour").style.backgroundColor = "";
+//                    Result Nothing happens in the browser, no error in the consle
+//                the string is not a number, not a colour
+//                document.getElementById("bkgColour").style.backgroundColor = "car";
+//                    Result Nothing happens in the browser, no error in the consle
+            }
+
+//            top or left is set to a negative value
+            function negLeft() {
+                document.getElementById("box").style.left = "-100px";
+                // this just throws the div of the page
+            }
+
+            function negTop() {
+                document.getElementById("box").style.top = "-400px";
+                // this just throws the div of the page
+            }
+
+            //            heighth of width set to a negative value or zero or null or empty value or raw number
+            function widthZero() {
+                document.getElementById("box").style.width = "0";
+                //This makes the div disapear
+            }
+            function heightZero() {
+                document.getElementById("box").style.height = "0";
+                //This makes the div disapear and moves the html below up
+            }
+            function widthNeg() {
+                document.getElementById("box").style.width = "-5px";
+                //This does nothing
+            }
+            function heightNeg() {
+                document.getElementById("box").style.height = "-5px";
+                //This does nothing
+            }
+            function heightNull() {
+                document.getElementById("box").style.height = null;
+                //This does nothing
+            }
+            function widthNull() {
+                document.getElementById("box").style.height = null;
+                //This does nothing
+            }
+            function heightString() {
+                document.getElementById("box").style.height = "orange cantelope";
+                //This does nothing
+            }
+        </script>
+    </head>
+    <body>
+        <p id="font">Here is a paragraph with an id attached</p>
+        <button onclick="font()">change the font family</button>
+
+        <p id="bkgColour">Here is another paragraph with an id attached</p>
+        <button onclick="bkgColor()">change the background color</button>
+
+        <div id="box"></div>
+        <p>
+            The following to buttons result in nasty path functions where the div goes of the screen.
+            This just fiddles with the top and left of the position attribute.
+        </p>
+        <button onclick="negLeft()">change the left attribute to -100</button>
+        <button onclick="negTop()">change the top attribute to -100</button>
+
+        <br>
+        <p>
+            The following buttons change the height and the width of the div.<br>
+            <button onclick="widthZero()">change the with to zero pixels</button>
+            <button onclick="heightZero()">change the height to zero pixels</button>
+            <button onclick="widthNeg()">change the width to a negative pixel</button>
+            <button onclick="heightNeg()">change the height to a negative pixel</button>
+            <button onclick="heightNull()">change the height to null</button>
+            <button onclick="widthNull()">change the width to null</button>
+            <button onclick="heightString()">change the height to string</button>
+        </p>
+    </body>
+</html>
