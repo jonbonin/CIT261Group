@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<style>
+		/*Basic red square with 2s transition*/
+		#myDIV {
+			width: 100px;
+			height: 100px;
+			background: red;
+			transition: width 2s;
+		}
+
+		/*Basic orange rectangle*/
+		#myDIV2 {
+			margin: 25px;
+			width: 550px;
+			height: 100px;
+			background: orange;
+			position: relative;
+			font-size: 20px;
+		}
+
+		/*Animation that moves element down*/
+		@keyframes mymove {
+			from {top: 0px;}
+			to {top: 200px;}
+		}
+	</style>
+
+
+	<script>
+		//changes 'demo' div to current date
+		function displayDate() {
+			document.getElementById("demo").innerHTML = Date();
+		}
+
+		//changes 'demo2' div to selected car
+		function myFunction2() {
+			var x = document.getElementById("mySelect").value;
+			document.getElementById("demo2").innerHTML = "You selected: " + x;
+		}	
+
+		//changes red square div after transition
+		function myFunction() {
+			this.innerHTML = "transitionend event occured - The transition has completed";
+			this.style.backgroundColor = "pink";
+		}
+
+		//starts red square transition and creates transitionend eventListener
+		function makeItBig(theDIV) {
+			theDIV.style.width = "400px";
+			theDIV.addEventListener("transitionend", myFunction);
+		}
+
+		//triggers orange rectangle animation
+		function myFunction3(theDIV) {
+			theDIV.style.animation = "mymove 4s 2";
+			theDIV.addEventListener("animationstart", myStartFunction);
+		}	
+
+		//changes orange rectangle at start of animation
+		function myStartFunction() {
+			this.innerHTML = "animationstart event occured - The animation has started";
+			this.style.backgroundColor = "pink";
+			this.addEventListener("animationiteration", myRepeatFunction);
+		}
+
+		//changes rectangle after animation has iterated
+		function myRepeatFunction() {
+			this.innerHTML = "animationiteration event occured - The animation was played again";
+			this.style.backgroundColor = "lightblue";
+			this.addEventListener("animationend", myEndFunction);
+		}
+
+		//changes rectangle after animation has ended
+		function myEndFunction() {
+			this.innerHTML = "animationend event occured - The animation has completed";
+			this.style.backgroundColor = "lightgray";
+		}
+
+	</script>
+</head>
+<body>
+	<p>Click the button to display the date.</p>
+	<!--button that calls displayDate when clicked-->
+	<button onclick="displayDate()">The time is?</button>
+
+	<p id="demo"></p>
+
+	<p>Select a new car from the list.</p>
+	<!--list that calls myFunction2 when selection is changed-->
+	<select id="mySelect" onchange="myFunction2()">
+		<option value="Audi"/>Audi
+		<option value="BMW"/>BMW
+		<option value="Mercedes"/>Mercedes
+		<option value="Volvo"/>Volvo
+	</select>
+
+	<p id="demo2"></p>
+
+	<!--red square that calls makeItBig when clicked-->
+	<div id="myDIV" onclick="makeItBig(this)"></div>
+
+	<!--orange rectange that calls myFunction3 when clicked-->
+	<div id="myDIV2" onclick="myFunction3(this)">Click me to start the animation.</div>
+</body>
+</html>
