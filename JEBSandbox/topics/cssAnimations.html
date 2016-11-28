@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>CSS Animations</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <style>
+            #example{
+                width: 60px;
+                height: 60px;
+                background-color: orange;
+                position:relative;
+                animation-name: exampleAnimation;
+                animation-iteration-count: 3;
+                animation-duration: 5s;
+                animation-play-state: paused;
+            }
+
+            #change{
+                /*animation-delay: 0s;*/
+                animation:oneByOne 2s forwards;
+                font-size: 20px;
+                /*animation-duration:2.5s;*/
+                opacity:0;
+                animation-direction: normal;
+                /*animation-iteration-count: 1;*/
+                /*animation-fill-mode: forwards;*/
+            }
+
+            .ball {
+                width: 200px;
+                height: 200px;
+                background: red;
+                border-radius: 50%;
+            }
+
+            .doAnim {
+                animation: myAnim 2s forwards;
+                animation-iteration-count: 2;
+            }
+
+            @keyframes exampleAnimation{
+                0% {top:0px; left:0px;}
+                25% {left:60px}
+                50% {top:100px; left:120px;}
+                75% {left:60px}
+                100% {top:200px; left: 0px;}
+            }
+
+            @Keyframes oneByOne{
+                0%{opacity: 0;}  
+                75%{opacity: 1;}
+                100%{opacity: .70;}
+            }
+            @keyframes myAnim {
+
+                to {
+                    background-color: pink;
+                    transform: translateX(500px) scale(.5);
+                }
+
+            }
+        </style>
+        <script>
+            function changeAnimationState() {
+                document.getElementById("example").style.animationPlayState = "running";
+            }
+            function printArray() {
+                var searches = ['Food Network', 'Restuarants in Rexburg', 'Original Thai', 'The Best Ten Restuarants in Rexburg'];
+//                var searchesString = searches.toString();
+                for (i = 0; i < searches.length; i++) {
+//                    document.getElementById("arrayDisplay").innerHTML = searchesString +;
+                    var p = document.createElement("p");
+                    p.id = 'change';
+                    var sectionPrint = document.getElementById("arrayDisplay");
+                    sectionPrint.appendChild(p);
+                    p.innerHTML = searches[i];
+                    p.style.animationDelay = i / 2 + "s";
+//                    p.style.opacity=.85;
+                }
+                document.getElementById("arrayDisplayComment").innerHTML = "See how this paragraph just poped up willy nilly? no fun :-( make the searches appear bettter!";
+            }
+//                The next code block does something pretty cool. It displays the array with 1 second in between. 
+//                the next item to apper will be the next item in the array
+//                var i = 0;
+//                setInterval(function () {                   // setInterval makes it run repeatedly
+//                    document
+//                            .getElementById('arrayDisplay')
+//                            .innerHTML = searches[i++];     // get the item and increment i to move to the next
+//                    if (i == searches.length)
+//                        i = 0;                              // reset to first element if you've reached the end
+//                }, 1000);
+            function example() {
+                var start = document.querySelectorAll('button')[2],
+                        reset = document.querySelectorAll('button')[3],
+                        ball = document.querySelector('.ball');
+
+                start.addEventListener('click', function () {
+                    ball.classList.add('doAnim');
+                    ball.classList.remove('reset');
+                }, false);
+
+                reset.addEventListener('click', function () {
+                    ball.classList.remove('doAnim');
+                }, false);
+            }
+        </script>
+    </head>
+    <body onload = "example()">
+        <h3>Animations and Keyframes</h3>
+        <section id="example"></section>
+        <button onclick="changeAnimationState()">Make the Orange box move</button>
+        <br><br>
+        <button onclick="printArray()">Search For Food Normally</button>
+        <section id = "arrayDisplay"></section>
+        <p id = "arrayDisplayComment"></p>
+        <button>START THE ANIMATION</button>
+        <button>RESET THE ANIMATION</button>
+        <br>
+        <div class="ball"></div>
+    </body>
+</html>
