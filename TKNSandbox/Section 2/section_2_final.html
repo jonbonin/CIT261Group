@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+	<html>
+		<head>
+			<meta charset="UTF-8">
+			<title>Section 2</title>
+		</head>
+		<body>
+			<p id="output"></p>
+			
+			<script>
+			//First Class
+			function Vehicles(type,color,cost){
+				this.vehicle_type = type;
+				this.vehicle_color = color;
+				this.vehicle_cost = cost;
+			}
+
+			//Second Class
+			function Cars(type,color,cost,structure,doors,make,model){
+			Vehicles.call(this,type,color,cost);
+			this.car_type = structure;
+			this.number_of_doors = doors;
+			this.car_make = make;
+			this.car_model = model;
+			}
+			
+			//Instance
+			var myCar = new Cars("Car","Blue",999999, "US","Full", 4, "Honda", "Civic");
+			
+			//Display
+				var info = " ";
+				
+				for (var i in myCar){
+				info += " " + myCar[i];
+			}
+			document.getElementById("output").innerHTML = info;
+			
+			//Nasty-Path: Forgetting to use the this keyword when using the call function
+			//The parent class won't be called
+			function boat(type,color,cost,name_type){
+				Vehicles.call(type,color,cost);
+				this.name_type = name_type;
+			}
+			
+			var myBoat = new boat("Car","Blue",999999, "Speed");
+			
+			//Nasty-Path: Circular inheritance
+			//function Person(color){
+			//this.hair_color = color
+			//var teeth = " ";
+			//Kid.call(teeth);
+			//}
+			
+			//function Kid(teeth){
+			//this.missing_teeth = teeth;
+			//var color = " ";
+			//Person.call(color);
+			//}
+			//var billyTheKid = new Kid(3);
+			//Return: Either there is a call stack error or the variable or object being passed in is not defined
+			</script>
+			
+			
+		</body>
+	</html>
+	

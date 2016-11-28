@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+	<html>
+		<head>
+			<meta charset="UTF-8">
+			<title>Object Creation and Properties</title>
+		</head>
+		<body>
+			<p id="object"></p>
+			<p id="objectWrong">There should be nothing here besides this text.</p>
+			<p id="objectRight">There should be something here besides this text</p>
+			<p id="objectTwo"></p>
+			<p id="objectThree"></p>
+			<p id="objectFour"></p>
+			<p id="objectFive"></p>
+			<p id="objectSix"></p>
+			
+			
+			<script>
+				//Basic object
+				var weapon = "Sword";
+				document.getElementById("object").innerHTML = weapon;
+
+				//Nasty-Path: Using the wrong reference id
+				document.getElementById("objectWrong").innerHTML = weapon;
+				
+				//Object with multiple values or properties
+				var locations = {country:"USA", state:"Idaho", town:"Rexburg"};
+				
+				//Nasty-Path: Using a keyword as variable
+				//var location ={country:"USA", state:"Idaho", town:"Rexburg"};
+				//Return: unspecified compile error
+				
+				document.getElementById("objectTwo").innerHTML = "I am currently in " + locations.town + ", " + locations.state + ".";
+				
+				//Object with function
+				var car = {
+    make: "Honda",
+    model: "Civic",
+    year: 1991,
+	color: "Blue",
+    fullName : function() {
+       return this.color + " " + this.make + " " + this.model;
+    }
+};
+
+		//Nasty-Path: Creating a function when your supposed to be creating an object
+					function cars(){
+			this.makes = "Honda";
+			this.models = "Civic";
+			this.years = 1991;
+			this.colors = "Blue",
+			this.fullNames = function fullNames(){
+				var theName = colors + " " + makes + " " + models
+			   return theName;
+			}
+		}
+	
+			document.getElementById("objectThree").innerHTML = "I used to have a " + car.fullName() + ".";
+
+			//Nasty-Path: Not using a closed paranthesis when calling a method
+			console.log("I used to have a " + cars.fullNames) ;
+			
+			//Deleting properties
+			delete locations.town;
+			
+			//Nasty-Path: Deleting the wrong properties
+			delete locations.zip;
+			console.log(locations.zip);
+			
+			//Adding properties
+			locations.town = "Parma";
+			locations.zip = "83660";
+			document.getElementById("objectFour").innerHTML = locations.town;
+			document.getElementById("objectFive").innerHTML = locations.zip;
+			
+			//Nasty-Path: Adding an incorrect property
+			locations.town = "384-3233-3333";
+			console.log(locations.town);
+			locations.town = "Parma";
+			
+       		//Looping through properties
+			var info = "";
+			var info2 = " ";
+			
+			//Nasty-Path: Not declaring a variable to a null value
+			var infoStorage;
+			
+			
+			for (var i in locations){
+				info += " " + locations[i];
+				infoStorage += " " + locations[i];
+			}
+			
+			document.getElementById("objectSix").innerHTML = info;
+			console.log(infoStorage);
+			
+			//Nasty-Path: Changing your variable in a loop everytime instead of adding to it everytime
+						for (var i in locations){
+				info2 = " " + locations[i];
+			}
+			
+			console.log(info2);
+			</script>
+			
+			
+		</body>
+	</html>
+

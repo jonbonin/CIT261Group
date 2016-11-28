@@ -1,0 +1,73 @@
+<!DOCTYPE>
+<html>
+		<head>
+			<meta charset="UTF-8">
+			<title>Stringify</title>
+		</head>
+<body>
+			<p id="output"></p>
+			<p id="outputTwo"></p>
+			<p id="outputThree"></p>
+			<p id="outputFour"></p>
+			<p id="outputFive"></p>
+			<p id="outputSix"></p>
+<script>
+var teammates = new Object();
+teammates.firstName = ["Tanner","Jon","Matt","Peyton"];
+teammates.lastName = ["Nielsen","Bonin","Beagley","Dunnaway"];
+
+//Nasty-Path: Assigning the wrong information to your object 
+ teammates.someNumbers = ["Nielsen","Bonin","Beagley","Dunnaway"];
+ console.log(teammates.someNumbers);
+ 
+var names = new Array();
+names[0] = "firstName";
+names[1] = "lastName";
+
+//Nasty-Path: Assigning the wrong index number when assigning an array
+var info = "";
+names[1] = "firstName";
+names[2] = "lastName";
+			for (var i in names){
+				info += " " + names[i];
+			}
+			console.log(info);
+			
+names[0] = "firstName";
+names[1] = "lastName";
+var jsonExText = JSON.stringify(teammates, names);
+
+//Nasty-Path: Adding a wrong array
+names[3] = "someNumbers";
+console.log(names[3]);
+
+//Nasty-Path: Messing up the order of the objects you pass into stringify
+var badJsonExText = JSON.stringify(names,teammates);
+console.log(badJsonExText);
+
+document.getElementById("output").innerHTML = jsonExText;
+
+	//Nasty-Path: stringify hello world
+	var info2 = "Hello World!"; 
+	var object2 = JSON.stringify(info2);
+	console.log(object2);
+	
+	//Nasty-Path: stringify null
+	var info2 = null; 
+	var object2 = JSON.stringify(info2);
+	console.log(object2);
+	
+	//Nasty-Path: stringify blank
+	var info2 = " "; 
+	var object2 = JSON.stringify(info2);
+	console.log(object2);
+	
+	//Nasty-Path: stringify number
+	var info2 = 12; 
+	var object2 = JSON.stringify(info2);
+	console.log(object2);
+	
+</script>
+</body>
+
+</html>

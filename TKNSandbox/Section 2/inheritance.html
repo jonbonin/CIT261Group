@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+	<html>
+		<head>
+			<meta charset="UTF-8">
+			<title>Inheritance and Methods</title>
+		</head>
+		<body>
+			<p id="object"></p>
+			<p id="objectTwo"></p>
+			<p id="objectThree"></p>
+			<p id="objectFour"></p>
+			<p id="objectFive"></p>
+			<p id="objectSix"></p>
+			<p id="objectSeven"></p>
+				
+			<script>
+//Parent class
+function myDad(){
+	this.dadSaying = "Whose ready for round two?";
+	this.dadBetting = function dadBetting(bet){
+	return "I have " + bet + " dollars on this game.";
+	}
+}
+
+//Child class
+function thisKid(){
+	this.kidSaying = "That was totally awesome!";
+	this.kidBetting = function kidBetting(bet){
+	return "I will bet you " + bet + " marbles that I will win this round."
+	}
+}
+
+//Nasty-Path: Using the same element or method in a parent or child class
+function badDad(){
+	this.badSaying = "Whose ready for round two?";
+	this.badBetting = function badBetting(bet){
+	return "I have " + bet + " dollars on this game.";
+	}
+}
+
+function badKid(){
+	this.badSaying = "That was totally awesome!";
+	this.badBetting = function kidBetting(bet){
+	return "I will bet you " + bet + " marbles that I will win this round."
+	}
+}
+
+//Class output
+var dadObj = new myDad();
+var kidObj = new thisKid();
+
+//Nasty-Path: Referencing a function to the wrong instances
+console.log(kidObj.dadSaying);
+
+document.getElementById("object").innerHTML = dadObj.dadSaying;
+document.getElementById("objectTwo").innerHTML = dadObj.dadBetting(54);
+document.getElementById("objectThree").innerHTML = kidObj.kidSaying;
+document.getElementById("objectFour").innerHTML = kidObj.kidBetting(4);
+
+//Nasty-Path: Inserting wrong data into a method
+var dadWillBet = 123;
+console.log(kidObj.kidBetting(dadWillBet));
+
+//Inheritance
+thisKid.prototype = new myDad();
+
+//Accessing classes through instances
+var theAppleDoesNotFallTooFar = new thisKid();
+
+//A child behaving like a parent
+document.getElementById("objectFive").innerHTML ="Like father like son the son says, " + theAppleDoesNotFallTooFar.dadBetting(2);
+
+//Override classes
+thisKid.prototype.dadBetting = function dadBetting(bet){
+	return "We should give " + bet + " dollars to charity.";
+	}
+
+	//Mess this up later
+//Nasty-Path: Changing something in class that wasn't meant to be changed permanently
+/*var itsMyDad = new badDad();
+
+	badDad.prototype.badBetting = function badBetting(bet){
+		return "It's game time! ";
+	}
+
+	console.log(itsMyDad.badBetting(1));
+	//theAppleDoesNotFallTooFar.prototype.dadBetting = function dadBetting(bet){     This will leave things undefined-->
+	*/
+	
+//Nasty-Path: Usinng the wrong instance to protoype a class
+//theAppleDoesNotFallTooFar.prototype.dadBetting = function dadBetting(bet){ var randomness = "sdfasdgo"; }
+//Result: Undefined type error
+
+//What mom wanted dad to say
+document.getElementById("objectSix").innerHTML =theAppleDoesNotFallTooFar.dadBetting(50);
+
+//What dad use to say
+document.getElementById("objectSeven").innerHTML = dadObj.dadBetting(99);
+			</script>	
+
+		</body>
+	</html>

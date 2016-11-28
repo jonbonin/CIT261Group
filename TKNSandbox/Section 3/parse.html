@@ -1,0 +1,60 @@
+<!DOCTYPE>
+<html>
+		<head>
+			<meta charset="UTF-8">
+			<title>JSON Parse</title>
+		</head>
+<body>
+			<p id="output"></p>
+			<p id="outputTwo"></p>
+			<p id="outputThree"></p>
+			<p id="outputFour"></p>
+			<p id="outputFive"></p>
+			<p id="outputSix"></p>
+<script>
+
+	
+	//Sets a variable to an array
+    var info = '{ "teammates" : [' +
+        '{ "firstName":"Tanner" , "lastName":"Nielsen" },' +
+        '{ "firstName":"Jon" , "lastName":"Bonin" },' +
+        '{ "firstName":"Matt" , "lastName":"Beagley" },' +
+        '{ "firstName":"Peyton" , "lastName":"Dunnaway" } ]}';
+
+	//Nasty-Path: Displaying this array before its proper form
+	console.log(info);
+	
+	//Nasty-Path: parse Null instead of string
+	var info2 = null; 
+	var object2 = JSON.parse(info2);
+	console.log(object2);
+	
+	//Nasty-Path: parse string isn't parse string that isn't json like hello world
+	var info3 = 32; 
+	var object3 = JSON.parse(info3);
+	console.log(object3);
+	
+	//Nasty-Path: parse empty string
+	//var info4 = ' '; 
+	//var object4 = JSON.parse(info4);
+	//console.log(object4);
+	//Return: syntax error
+	
+	//Turns string into objects
+    var object = JSON.parse(info);
+	
+	//Nasty-Path: Not using the correct JSON method
+	 var notImportant = JSON.stringify(info);
+	 
+	 console.log(notImportant);
+	 
+    for (var i = 0; i < 4; i++) {
+        document.getElementById("output").innerHTML +=
+            object.teammates[i].firstName + " " + object.teammates[i].lastName + "<br>";
+
+	//Nasty-Path: Not accessing the full array
+	console.log(object.teammates[i].firstName + " " + object.teammates[i].lastName + "<br>");
+	}
+</script>
+</body>
+</html>

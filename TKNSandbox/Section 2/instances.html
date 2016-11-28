@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+	<html>
+		<head>
+			<meta charset="UTF-8">
+			<title>Object Creation and Properties</title>
+		</head>
+		<body>
+			<p id="object"></p>
+			<p id="objectTwo"></p>
+			<p id="objectThree"></p>
+			<p id="objectFour"></p>
+			<p id="objectFive"></p>
+			<p id="objectSix"></p>
+			
+			<script>
+				//Class to reference
+							function Education(firstName, lastName, credits, major, id) 
+			{
+    			this.firstName = firstName;
+    			this.lastName = lastName;
+    			this.myCredits = credits;
+    			this.myMajor = major;
+				this.studentId = id;
+				this.myYear = function myYear(){
+					if (credits <= 30)
+					{
+						return "Freshman";
+					}
+					else if (credits <= 60)
+					{
+						return "Sophomore";
+					}
+					else if (credits <= 90)
+					{
+						return "Junior";
+					}
+					else if (credits <= 120)
+					{
+						return "Senior";
+					}
+					else 
+					{
+						return "Error!";
+					}
+					
+				}
+				
+				this.allIn = function allIn(){
+					return firstName + " " + lastName + "<br>" + credits + " credits" + "<br>" +  "Major is " + major + "<br>" + " Student ID: " + id + "<br>" + " Year in School: " + this.myYear();
+				}
+				
+				//Nasty-Path: Incorrectly calling a method from another method
+				//				this.allInTwo = function allInTwo(){
+				//						return firstName + " " + lastName + "<br>" + credits + " credits" + "<br>" +  "Major is " + major + //                     "<br>" + " Student ID: " + id + "<br>" + " Year in School: " + this.myYear();
+				//}
+				//Return: Undefined
+							
+				//Nasty-Path: Including a variable in a method function paranthesis when that variable is already included in the scope
+				
+				//Refers to a below Nasty-Path
+				this.allInTwo = function allInTwo(){
+					return "This is not the method you want.";
+			}
+		}
+				var student1 = new Education("John","Doe", 54, "English", 125979115);
+				var student2 = new Education("Austin","Powers", 92, "Engineering", 523523584);
+				var student3 = new Education("Jack","Bower", 32, "CIT", 523593584);
+				
+				document.getElementById("object").innerHTML = student1.myYear();
+				document.getElementById("objectTwo").innerHTML = student2.myMajor;
+				document.getElementById("objectThree").innerHTML = student3.allIn();
+				document.getElementById("objectTwo").innerHTML = student2.myMajor;
+				
+				//Nasty-Path: Using the wrong instance to access certain data
+				console.log(student3.allInTwo());
+				
+				//Nasty-Path: Not specifying which property or method your referencing with your instance
+				document.getElementById("objectFour").innerHTML = student3;
+			
+			//forget call this
+			//Circular inheritance
+			//Create two new classes
+						//function Baby(asdfas,sadfsad,fasdf)
+			//Human.Call(this.att..,l..,...)
+			</script>
+			
+			
+		</body>
+	</html>
+	
