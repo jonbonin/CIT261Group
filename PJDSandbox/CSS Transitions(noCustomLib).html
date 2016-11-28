@@ -1,50 +1,81 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<!-- CSS3 Transition/Transform Examples -->
 	<style>
+		.header {
+			background: red;
+			text-align: center;
+			color: white;
+			font-weight: bold;
+			font-size: 32px;
+			text-shadow: 2px 2px black;
+		}
+		
+		.footer {
+			background: red;
+			text-align: center;
+			color: white;
+			font-weight: bold;
+			font-size: 32px;
+			text-shadow: 2px 2px black;
+		}
+	
 		.demo1 {
-			width: 100px;
-			height: 100px;
+			width: 200px;
+			height: 200px;
 			background: blue;
 			text-shadow: 2px 2px black;
 			text-align: center;
 			transition: width 2s, background 2s, transform 2s;
 		}
+		
 		.demo1 p {
 			color: white;
+			position: relative;
+			top: 35%;
 			font-weight: bold;
+			font-size: 32px;
 		}
+		
 		.demo2 {
-			width: 100px;
-			height: 100px;
+			width: 200px;
+			height: 200px;
+			
 			background: blue;
 			text-shadow: 2px 2px black;
-			border-radius: 50px;
+			border-radius: 100px;
 			text-align: center;
 			transition: width 2s, height 2s, border-radius 2s, background 2s;
 		}
+		
 		.demo2 p {
+			
+			top: 35%;
 			color: white;
 			font-weight: bold;
+			font-size: 32px;
 		}
+		
 		.demo3 {
 			width: 300px;
 			height: 50px;
 			color: white;
 			font-weight: bold;
 			text-shadow: 2px 2px black;
+			font-size: 32px;
 			background: black;
 			opacity: 1.0;
 			text-align: center;
 			transition: width .25s, height .25s, background .25s, opacity .25s;
 		}
+		
 		.demo3:hover {
 			width: 305px;
 			height: 55px;
 			background: grey;
 			opacity: .5;
 		}
+		
 		.demo4 {
 			position: absolute;
 			top: 45%;
@@ -53,6 +84,7 @@
 			height: 75px;
 			text-align: center;
 			font-weight: bold;
+			font-size: 32px;
 			border: 5px solid #000;
 			border-right-color: transparent;
 			border-radius: 50%;
@@ -62,44 +94,77 @@
 			animation: loading 1s linear infinite;
 			animation-play-state: paused;
 		}
+		
 		@keyframes loading {
 			0% {transform: rotate(0deg); opacity: 0.2;}
 			50% {transform: rotate(180deg); opacity: 1.0;}
 			100% {transform: rotate(360deg); opacity: 0.2;}
 		}
 	</style>
+	
 	<script>
-		function transition1(demo) {
-			demo.style.width = "1000px";
-			demo.style.background = "red";
-			demo.style.transform = "translate(0px, 500px)";
+		function transition1(demo1) {
+			demo1.style.width = "1000px";
+			demo1.style.background = "red";
+			demo1.style.transform = "translate(0px, 500px)";
 		}
-		function transition2(demo) {
+		function transition2(demo2) {
 			//find way to create state and reset transition when clicked a second time.
-			demo.style.width = "500px";
-			demo.style.height = "500px";
-			demo.style.borderRadius = "250px";
-			demo.style.background = "red";
+			demo2.style.width = "500px";
+			demo2.style.height = "500px";
+			demo2.style.borderRadius = "250px";
+			demo2.style.background = "red";
 		}
-		function transition4(demo) {
-			demo.style.opacity="1.0";
-			document.getElementById("loader").style.animationPlayState = "active";	
+		function transition4(demo4) {
+			
+			demo4.style.opacity="1.0";
+			demo4.style.animationPlayState = "active";
 		}
 	</script>
 </head>
+
 <body>
+	<header class="header"><h2>Banner</h2></header>
 	<section><p>Click on some of these!</p></section>
-	<section class="demo1" onclick="transition1(this)"><p>Demo1</p></section>
-	</br>
-	<section class="demo2" onclick="transition2(this)"><p>Demo2</p></section>
-	</br>
-	<p>Example of a Menu selection:</p>
-	<section>
-	<p class="demo3" onclick="transition4(loader)">Download Item 1</p>
-	<p class="demo3" onclick="transition4(loader)">Download Item 2</p>
-	<p class="demo3" onclick="transition4(loader)">Download Item 3</p>
-	<div id="loader" class="demo4"><span style="position:relative; top:40%; text-align:center; vertical-align:middle">Loading</span></div>
+	<!-- HAPPY PATH: Simple grow, move, and color shift -->
+	<section id="demo1" class="demo1" onclick="transition1(this)">
+	<!-- HAPPY PATH: Loads default text formatting -->
+	<p>Demo1</p>
 	</section>
 	</br>
+	<!-- NASTY PATH: Simple grow, move, and color shift but moves others items off of screen -->
+	<section id="demo2" class="demo2" onclick="transition2(this)">
+	<!-- HAPPY PATH: Loads default text formatting -->
+	<p>Demo2</p>
+	</section>
+	</br>
+	<p>Example of a Menu selection:</p>
+	<!-- NASTY PATH: If creating mobile app, hover is trivial. Works well for PCs though(consider using for mobile app by change on-touch method instead) -->
+	<section>
+	<p id="demo3" class="demo3" onclick="transition4(demo4)">Download Item 1</p>
+	<p id="demo3" class="demo3" onclick="transition4(demo4)">Download Item 2</p>
+	<p id="demo3" class="demo3" onclick="transition4(demo4)">Download Item 3</p>
+	<section id="demo4" class="demo4"><span style="position:relative; top:40%; text-align:center; vertical-align:middle">Loading</span></section>
+	</section>
+	</br>
+	<p>TEXT</p><p>TEXT</p><p>TEXT</p><p>TEXT</p><p>TEXT</p><p>TEXT</p>
+	<p>TEXT</p><p>TEXT</p><p>TEXT</p><p>TEXT</p><p>TEXT</p><p>TEXT</p>
+	<p>TEXT</p><p>TEXT</p><p>TEXT</p><p>TEXT</p><p>TEXT</p><p>TEXT</p>
+	<p>TEXT</p><p>TEXT</p><p>TEXT</p><p>TEXT</p><p>TEXT</p><p>TEXT</p>
+	<p>TEXT</p><p>TEXT</p><p>TEXT</p><p>TEXT</p><p>TEXT</p><p>TEXT</p>
+	<p>TEXT</p><p>TEXT</p><p>TEXT</p><p>TEXT</p><p>TEXT</p><p>TEXT</p>
+	<p>TEXT</p><p>TEXT</p><p>TEXT</p><p>TEXT</p><p>TEXT</p><p>TEXT</p>
+	<p>TEXT</p><p>TEXT</p><p>TEXT</p><p>TEXT</p><p>TEXT</p><p>TEXT</p>
+	<p>TEXT</p><p>TEXT</p><p>TEXT</p><p>TEXT</p><p>TEXT</p><p>TEXT</p>
+	<p>TEXT</p><p>TEXT</p><p>TEXT</p><p>TEXT</p><p>TEXT</p><p>TEXT</p>
+	<p>TEXT</p><p>TEXT</p><p>TEXT</p><p>TEXT</p><p>TEXT</p><p>TEXT</p>
+	<p>TEXT</p><p>TEXT</p><p>TEXT</p><p>TEXT</p><p>TEXT</p><p>TEXT</p>
+	<p>TEXT</p><p>TEXT</p><p>TEXT</p><p>TEXT</p><p>TEXT</p><p>TEXT</p>
+	<p>TEXT</p><p>TEXT</p><p>TEXT</p><p>TEXT</p><p>TEXT</p><p>TEXT</p>
+	<p>TEXT</p><p>TEXT</p><p>TEXT</p><p>TEXT</p><p>TEXT</p><p>TEXT</p>
+	<p>TEXT</p><p>TEXT</p><p>TEXT</p><p>TEXT</p><p>TEXT</p><p>TEXT</p>
+	<p>TEXT</p><p>TEXT</p><p>TEXT</p><p>TEXT</p><p>TEXT</p><p>TEXT</p>
+	<p>TEXT</p><p>TEXT</p><p>TEXT</p><p>TEXT</p><p>TEXT</p><p>TEXT</p>
+	<footer class="footer"><h2>Footer</h2></footer>
 </body>
 </html>
