@@ -40,7 +40,7 @@
 		.demo2 {
 			width: 200px;
 			height: 200px;
-			
+			position: relative;
 			background: blue;
 			text-shadow: 2px 2px black;
 			border-radius: 100px;
@@ -49,7 +49,7 @@
 		}
 		
 		.demo2 p {
-			
+			position: relative;
 			top: 35%;
 			color: white;
 			font-weight: bold;
@@ -103,8 +103,28 @@
 	</style>
 	
 	<script>
+			window.addEventListener('touchstart', function(e){
+			var touchobj = e.changedTouches[0] // reference first touch point (ie: first finger)
+			startx = parseInt(touchobj.clientX)
+			div.innerHTML = 'Status: touchstart<br /> ClientX: ' + startx + 'px'
+			e.preventDefault()
+		}, false)
+		
+		window.addEventListener('touchmove', function(e){
+			var touchobj = e.changedTouches[0] // reference first touch point (ie: first finger)
+			var dist = parseInt(touchobj.clientX) - startx
+			div.innerHTML = 'Status: touchmove<br /> Horizontal distance traveled: ' + dist + 'px'
+			e.preventDefault()
+		}, false)
+		
+		window.addEventListener('touchend', function(e){
+			var touchobj = e.changedTouches[0] // reference first touch point (ie: first finger)
+			div.innerHTML = 'Status: touchend<br /> Resting x coordinate: ' + touchobj.clientX + 'px'
+			e.preventDefault()
+		}, false)
+		
 		function transition1(demo1) {
-			demo1.style.width = "1000px";
+			demo1.style.width = "975px";
 			demo1.style.background = "red";
 			demo1.style.transform = "translate(0px, 500px)";
 		}
@@ -116,7 +136,6 @@
 			demo2.style.background = "red";
 		}
 		function transition4(demo4) {
-			
 			demo4.style.opacity="1.0";
 			demo4.style.animationPlayState = "active";
 		}
@@ -125,15 +144,16 @@
 
 <body>
 	<header class="header"><h2>Banner</h2></header>
+	<section id="div">"Status: "<br>"Resting x coordinate:  "</section>
 	<section><p>Click on some of these!</p></section>
 	<!-- HAPPY PATH: Simple grow, move, and color shift -->
-	<section id="demo1" class="demo1" onclick="transition1(this)">
+	<section id="demo1" class="demo1" ontouch="transition1(this)">
 	<!-- HAPPY PATH: Loads default text formatting -->
 	<p>Demo1</p>
 	</section>
 	</br>
 	<!-- NASTY PATH: Simple grow, move, and color shift but moves others items off of screen -->
-	<section id="demo2" class="demo2" onclick="transition2(this)">
+	<section id="demo2" class="demo2" ontouch="transition2(this)">
 	<!-- HAPPY PATH: Loads default text formatting -->
 	<p>Demo2</p>
 	</section>
@@ -141,21 +161,12 @@
 	<p>Example of a Menu selection:</p>
 	<!-- NASTY PATH: If creating mobile app, hover is trivial. Works well for PCs though(consider using for mobile app by change on-touch method instead) -->
 	<section>
-	<p id="demo3" class="demo3" onclick="transition4(demo4)">Download Item 1</p>
-	<p id="demo3" class="demo3" onclick="transition4(demo4)">Download Item 2</p>
-	<p id="demo3" class="demo3" onclick="transition4(demo4)">Download Item 3</p>
+	<p id="demo3" class="demo3" ontouch="transition4(demo4)">Download Item 1</p>
+	<p id="demo3" class="demo3" ontouch="transition4(demo4)">Download Item 2</p>
+	<p id="demo3" class="demo3" ontouch="transition4(demo4)">Download Item 3</p>
 	<section id="demo4" class="demo4"><span style="position:relative; top:40%; text-align:center; vertical-align:middle">Loading</span></section>
 	</section>
 	</br>
-	<p>TEXT</p><p>TEXT</p><p>TEXT</p><p>TEXT</p><p>TEXT</p><p>TEXT</p>
-	<p>TEXT</p><p>TEXT</p><p>TEXT</p><p>TEXT</p><p>TEXT</p><p>TEXT</p>
-	<p>TEXT</p><p>TEXT</p><p>TEXT</p><p>TEXT</p><p>TEXT</p><p>TEXT</p>
-	<p>TEXT</p><p>TEXT</p><p>TEXT</p><p>TEXT</p><p>TEXT</p><p>TEXT</p>
-	<p>TEXT</p><p>TEXT</p><p>TEXT</p><p>TEXT</p><p>TEXT</p><p>TEXT</p>
-	<p>TEXT</p><p>TEXT</p><p>TEXT</p><p>TEXT</p><p>TEXT</p><p>TEXT</p>
-	<p>TEXT</p><p>TEXT</p><p>TEXT</p><p>TEXT</p><p>TEXT</p><p>TEXT</p>
-	<p>TEXT</p><p>TEXT</p><p>TEXT</p><p>TEXT</p><p>TEXT</p><p>TEXT</p>
-	<p>TEXT</p><p>TEXT</p><p>TEXT</p><p>TEXT</p><p>TEXT</p><p>TEXT</p>
 	<p>TEXT</p><p>TEXT</p><p>TEXT</p><p>TEXT</p><p>TEXT</p><p>TEXT</p>
 	<p>TEXT</p><p>TEXT</p><p>TEXT</p><p>TEXT</p><p>TEXT</p><p>TEXT</p>
 	<p>TEXT</p><p>TEXT</p><p>TEXT</p><p>TEXT</p><p>TEXT</p><p>TEXT</p>
