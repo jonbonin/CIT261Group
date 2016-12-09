@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script>
+		window.addEventListener('touchstart', function(e){
+			var touchobj = e.changedTouches[0] // reference first touch point (ie: first finger)
+			startx = parseInt(touchobj.clientX)
+			starty = parseInt(touchobj.clientY)
+			div.innerHTML = 'Touch Event Status: touchstart<br />Initial X: ' + startx + 'px<br />Initial Y: ' +starty + 'px'
+			e.preventDefault()
+		}, false)
+		
+		window.addEventListener('touchmove', function(e){
+			var touchobj = e.changedTouches[0] // reference first touch point (ie: first finger)
+			var distx = parseInt(touchobj.clientX) - startx
+			var disty = parseInt(touchobj.clientY) - starty
+			div.innerHTML = 'Touch Event Status: touchmove<br /> Horizontal Distance Traveled: ' + distx + 'px<br/> Vertical Distance Traveled: ' + disty + 'px'
+			e.preventDefault()
+		}, false)
+		
+		window.addEventListener('touchend', function(e){
+			var touchobj = e.changedTouches[0] // reference first touch point (ie: first finger)
+			div.innerHTML = 'Touch Event Status: touchend<br /> Resting x coordinate: ' + touchobj.clientX + 'px<br /> Resting y coordinate: ' + touchobj.clientY + 'px'
+			e.preventDefault()
+		}, false)
+	</script>
+	<style>
+		.touch {
+			font-size: 60px;
+			border-style: solid;
+			border-width: 20px;
+			border-color: green;
+			box-shadow: 2px;
+		}
+	</style>
+</head>
+
+<body>
+	<section fontSize="60">Switch to dev tools Mobile Device mode and use touch-mouse emulator!</section>
+	<section class="touch" id="div">"Touch Event Status: "<br/>"X Coordinate: "<br/>"Y Coordinate: "</section>
+</body>
+</html>
